@@ -21,9 +21,8 @@ export class BrandService {
   _brand = {
     DASHBOARD: {
       META_TITLE: 'GPT Support Dashboard',
-      FAVICON_URL:
-        'https://tiledesk.com/wp-content/uploads/2022/07/tiledesk_v13-300x300.png',
-      company_name: 'Tiledesk',
+      FAVICON_URL: 'https://i.ibb.co/cD5hS42/logo-short-0.png',
+      company_name: 'GPT',
       company_site_name: 'tiledesk.com',
       company_site_url: 'https://www.tiledesk.com',
       company_logo_white__url:
@@ -61,8 +60,7 @@ export class BrandService {
     CHAT: {},
     CDS: {
       META_TITLE: 'Design Studio',
-      FAVICON_URL:
-        'https://tiledesk.com/wp-content/uploads/2022/07/tiledesk_v13-300x300.png',
+      FAVICON_URL: 'https://i.ibb.co/cD5hS42/logo-short-0.png',
       INFO_MENU_ITEMS: [
         { key: 'HELP_CENTER', icon: '', src: '', status: 'inactive' },
         { key: 'ROAD_MAP', icon: '', src: '', status: 'inactive' },
@@ -79,10 +77,10 @@ export class BrandService {
       BASE_LOGO_NO_TEXT: 'assets/logos/tiledesk_logo.svg',
       BASE_LOGO_WHITE: 'assets/logos/tiledesk-logo_new_white.svg',
       BASE_LOGO_WHITE_NO_TEXT: '',
-      COMPANY_NAME: 'Tiledesk',
-      BRAND_NAME: 'Tiledesk',
-      COMPANY_SITE_NAME: 'tiledesk.com',
-      COMANY_SITE_URL: 'https://www.tiledesk.com',
+      COMPANY_NAME: 'GPT',
+      BRAND_NAME: 'GPT',
+      COMPANY_SITE_NAME: '#',
+      COMANY_SITE_URL: '#',
       CONTACT_US_EMAIL: 'support@tiledesk.com',
       COMPANY_PRIMARY_COLOR: '',
       DOCS: true,
