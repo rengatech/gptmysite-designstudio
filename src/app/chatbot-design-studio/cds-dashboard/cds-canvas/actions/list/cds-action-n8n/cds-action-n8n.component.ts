@@ -28,7 +28,7 @@ export class CdsActionN8nComponent implements OnInit {
   @Input() previewMode: boolean = true;
   @Output() updateAndSaveAction = new EventEmitter();
   @Output() onConnectorChange = new EventEmitter<{type: 'create' | 'delete',  fromId: string, toId: string}>()
-  
+
   listOfIntents: Array<{name: string, value: string, icon?:string}>;
 
   // Connectors
@@ -39,17 +39,17 @@ export class CdsActionN8nComponent implements OnInit {
   isConnectedFalse: boolean = false;
   connector: any;
   private subscriptionChangedConnector: Subscription;
-  
+
   pattern = "^[a-zA-Z_]*[a-zA-Z_]+[a-zA-Z0-9_]*$";
 
   limitCharsText = TEXT_CHARS_LIMIT;
-  jsonParameters: string; 
+  jsonParameters: string;
   errorMessage: string;
 
   typeMethodAttribute = TYPE_METHOD_ATTRIBUTE;
   assignments: {} = {}
 
-  
+
   private logger: LoggerService = LoggerInstance.getInstance();
   constructor(
     private intentService: IntentService,
@@ -105,25 +105,25 @@ export class CdsActionN8nComponent implements OnInit {
           if(array[array.length -1] === 'true'){
             this.action.trueIntent = null
             this.isConnectedTrue = false
-          }        
+          }
           if(array[array.length -1] === 'false'){
             this.action.falseIntent = null
             this.isConnectedFalse = false;
           }
           if(this.connector.save)this.updateAndSaveAction.emit({type: TYPE_UPDATE_ACTION.CONNECTOR, element: this.connector});
-        } else { 
+        } else {
           this.logger.debug('[ACTION-CUSTOMER] updateConnector', this.connector.toId, this.connector.fromId ,this.action, array[array.length-1]);
           if(array[array.length -1] === 'true'){
             this.isConnectedTrue = true;
             this.action.trueIntent = '#'+this.connector.toId;
             if(this.connector.save)this.updateAndSaveAction.emit({type: TYPE_UPDATE_ACTION.CONNECTOR, element: this.connector});
-          }        
+          }
           if(array[array.length -1] === 'false'){
             this.isConnectedFalse = true;
             if(this.action.falseIntent !== '#'+this.connector.toId){
               this.action.falseIntent = '#'+this.connector.toId;
               if(this.connector.save)this.updateAndSaveAction.emit({type: TYPE_UPDATE_ACTION.CONNECTOR, element: this.connector});
-            } 
+            }
           }
         }
 
@@ -133,7 +133,7 @@ export class CdsActionN8nComponent implements OnInit {
     }
   }
 
-  
+
   // CUSTOM FUNCTIONS //
   private initialize(){
     this.initializeAttributes();
@@ -220,7 +220,7 @@ export class CdsActionN8nComponent implements OnInit {
     window.open(url, '_blank')
   }
   goToHelp(){
-    let url = "https://gethelp.tiledesk.com/articles/n8nio-action/"
+    let url = "https://gethelp.GPTMysite.com/articles/n8nio-action/"
     window.open(url, '_blank')
   }
 }

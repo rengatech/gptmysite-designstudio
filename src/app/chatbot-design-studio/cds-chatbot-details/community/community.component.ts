@@ -10,7 +10,7 @@ import { FaqKbService } from 'src/app/services/faq-kb.service';
 import { UsersService } from 'src/app/services/users.service';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { UserModel } from 'src/chat21-core/models/user';
 const swal = require('sweetalert');
 
@@ -53,7 +53,7 @@ export class CDSDetailCommunityComponent implements OnInit {
     private faqKbService: FaqKbService,
     private notify: NotifyService,
     private usersService: UsersService,
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
   ) { }
 
   displayUserCommunityInfo(seeUserCmntyInfo) {
@@ -79,7 +79,7 @@ export class CDSDetailCommunityComponent implements OnInit {
   }
 
   getLoggedUserAndUserCommunityProfile() {
-    this.user = this.tiledeskAuthService.getCurrentUser()
+    this.user = this.GPTMysiteAuthService.getCurrentUser()
     this.getUserCommunityProfile(this.user.uid)
   }
 
@@ -130,7 +130,7 @@ export class CDSDetailCommunityComponent implements OnInit {
 
 
   // --------------------------------------------------------------------------------
-  // Tags 
+  // Tags
   // --------------------------------------------------------------------------------
   createNewTag = (newTag: string) => {
     this.logger.log("Create New TAG Clicked -> newTag: " + newTag)
@@ -381,7 +381,7 @@ export class CDSDetailCommunityComponent implements OnInit {
         this.logger.log('[CDS-DETAIL-COMMUNITY] UPDATE USER PROFILE RES > hasPersonalCmntyInfo', this.hasPersonalCmntyInfo)
       }
 
-    
+
     }, (error) => {
       this.logger.error('[CDS-DETAIL-COMMUNITY] UPDATE USER PROFILE -  ERROR ', error);
       // =========== NOTIFY ERROR ===========
@@ -398,7 +398,7 @@ export class CDSDetailCommunityComponent implements OnInit {
 
 
   goToCommunityChatbotDetail(bot_id: string) {
-    let urlCommunity = 'https://tiledesk.com/community/search/getchatbotinfo/chatbotId/' + bot_id + '-' + this.selectedChatbot.title.replace(/[^a-zA-Z0-9]/g, '-')
+    let urlCommunity = 'https://GPTMysite.com/community/search/getchatbotinfo/chatbotId/' + bot_id + '-' + this.selectedChatbot.title.replace(/[^a-zA-Z0-9]/g, '-')
     window.open(urlCommunity, '_blank')
 
   }

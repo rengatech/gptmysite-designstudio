@@ -1,10 +1,10 @@
 export const BRAND_BASE_INFO: { [key: string]: string | boolean } = {
   COMPANY_NAME: 'GPT',
   BRAND_NAME: 'GPT',
-  COMPANY_SITE_NAME: 'tiledesk.com',
-  COMPANY_SITE_URL: 'https://www.tiledesk.com',
-  CONTACT_US_EMAIL: 'support@tiledesk.com',
-  FAVICON: 'assets/logos/tiledesk-circular-icon.svg',
+  COMPANY_SITE_NAME: 'GPTMysite.com',
+  COMPANY_SITE_URL: 'https://www.GPTMysite.com',
+  CONTACT_US_EMAIL: 'support@GPTMysite.com',
+  FAVICON: 'assets/logos/GPTMysite-circular-icon.svg',
   META_TITLE: 'Design Studio',
   DOCS: true,
   COMMUNITY_SECTION: true,
@@ -16,31 +16,31 @@ export const LOGOS_ITEMS: {
 } = {
   COMPANY_LOGO: {
     label: BRAND_BASE_INFO.COMPANY_NAME,
-    icon: 'assets/logos/tiledesk_logo.svg',
+    icon: 'assets/logos/GPTMysite_logo.svg',
   },
   COMPANY_LOGO_NO_TEXT: {
     label: BRAND_BASE_INFO.COMPANY_NAME,
-    icon: 'assets/logos/tiledesk_logo_no_text.svg',
+    icon: 'assets/logos/GPTMysite_logo_no_text.svg',
   },
   BASE_LOGO: {
     label: BRAND_BASE_INFO.BRAND_NAME,
-    icon: 'assets/logos/tiledesk_logo.svg',
+    icon: 'assets/logos/GPTMysite_logo.svg',
   },
   BASE_LOGO_NO_TEXT: {
     label: BRAND_BASE_INFO.BRAND_NAME,
-    icon: 'assets/logos/tiledesk_logo_no_text.svg',
+    icon: 'assets/logos/GPTMysite_logo_no_text.svg',
   },
   BASE_LOGO_WHITE: {
     label: BRAND_BASE_INFO.BRAND_NAME,
-    icon: '"assets/logos/tiledesk-logo_new_white.svg',
+    icon: '"assets/logos/GPTMysite-logo_new_white.svg',
   },
   BASE_LOGO_WHITE_NO_TEXT: {
     label: BRAND_BASE_INFO.BRAND_NAME,
-    icon: '"assets/logos/tiledesk-logo_new_white.svg',
+    icon: '"assets/logos/GPTMysite-logo_new_white.svg',
   },
   BASE_LOGO_GRAY: {
     label: BRAND_BASE_INFO.BRAND_NAME,
-    icon: 'https://support-pre.tiledesk.com/dashboard/assets/img/logos/tiledesk-logo_new_gray.svg',
+    icon: 'https://support-pre.GPTMysite.com/dashboard/assets/img/logos/GPTMysite-logo_new_gray.svg',
   },
 };
 

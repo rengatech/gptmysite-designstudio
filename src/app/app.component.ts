@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AppConfigService } from './services/app-config';
 import { TranslateService } from '@ngx-translate/core';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppStorageService } from 'src/chat21-core/providers/abstract/app-storage.service';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private appConfigService: AppConfigService,
     public translate: TranslateService,
-    public tiledeskAuthService: TiledeskAuthService,
+    public GPTMysiteAuthService: GPTMysiteAuthService,
     public dialog: MatDialog,
     private router: Router,
     public appStorageService: AppStorageService,
@@ -77,11 +77,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.logger.log('[APP-COMP] ngOnInit AUTOLOGIN token get with getParameterByName  ', token)
       // save token in local storage then 
 
-      const storedToken = localStorage.getItem('tiledesk_token');
+      const storedToken = localStorage.getItem('GPTMysite_token');
       this.logger.log('[APP-COMP] ngOnInit AUTOLOGIN storedToken ', storedToken)
       this.logger.log('[APP-COMP] ngOnInit AUTOLOGIN SAVE THE PARAMS TOKEN ', token)
       if (storedToken !== token) {
-        localStorage.setItem('tiledesk_token', token);
+        localStorage.setItem('GPTMysite_token', token);
       } else {
         this.logger.log('[APP-COMP] ngOnInit AUTOLOGIN the current user already exist DON\'T SAVE ')
       }
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private async initialize(){
     let serverBaseURL = this.appConfigService.getConfig().apiUrl
-    this.tiledeskAuthService.initialize(serverBaseURL);
+    this.GPTMysiteAuthService.initialize(serverBaseURL);
 
     // ---------------------------------------
     // Watch to network status
@@ -121,7 +121,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   signInWithCustomToken(token) {
     // this.isOnline = false;
     this.logger.log('[APP-COMP] SIGNINWITHCUSTOMTOKEN  token', token)
-    this.tiledeskAuthService.signInWithCustomToken(token).then((user: any) => {
+    this.GPTMysiteAuthService.signInWithCustomToken(token).then((user: any) => {
         this.logger.log('[APP-COMP] SIGNINWITHCUSTOMTOKEN AUTLOGIN user', user)
     }).catch(error => {
         this.logger.error('[APP-COMP] SIGNINWITHCUSTOMTOKEN error::', error)
@@ -255,7 +255,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
           this.logger.log('[APP-COMP] updateStoredCurrentUser - dshbrdUser.fullname ', currentUser.fullname)
         }
         this.appStorageService.setItem('currentUser', JSON.stringify(currentUser));
-        this.tiledeskAuthService.setCurrentUser(currentUser);
+        this.GPTMysiteAuthService.setCurrentUser(currentUser);
       }
     } else {
       this.logger.error('[APP-COMP] updateStoredCurrentUser - currentuser or dashboarduser not found in storage')
@@ -265,17 +265,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   /***************************************************+*/
   /**------- AUTHENTICATION FUNCTIONS --> START <--- +*/
   initAuthentication() {
-    const tiledeskToken = localStorage.getItem('tiledesk_token')
+    const GPTMysiteToken = localStorage.getItem('GPTMysite_token')
 
     let serverBaseURL = this.appConfigService.getConfig().apiUrl
 
     this.logger.log('[APP-COMP] >>> INIT-AUTHENTICATION !!! ')
-    this.logger.log('[APP-COMP] >>> initAuthentication tiledeskToken ', tiledeskToken)
+    this.logger.log('[APP-COMP] >>> initAuthentication GPTMysiteToken ', GPTMysiteToken)
     // const currentUser = JSON.parse(this.appStorageService.getItem('currentUser'));
     // this.logger.log('[APP-COMP] >>> initAuthentication currentUser ', currentUser)
-    if (tiledeskToken) {
+    if (GPTMysiteToken) {
       this.logger.log('[APP-COMP] >>> initAuthentication I LOG IN WITH A TOKEN EXISTING IN THE LOCAL STORAGE OR WITH A TOKEN PASSED IN THE URL PARAMETERS <<<')
-      this.tiledeskAuthService.signInWithCustomToken(tiledeskToken).then(user => {
+      this.GPTMysiteAuthService.signInWithCustomToken(GPTMysiteToken).then(user => {
         this.logger.log('[APP-COMP] >>> initAuthentication user ', user)
 
         //this.updateStoredCurrentUser()

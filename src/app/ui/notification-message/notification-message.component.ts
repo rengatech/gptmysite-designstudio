@@ -8,7 +8,7 @@ import { BrandService } from '../../services/brand.service';
 import { takeUntil } from 'rxjs/operators';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { AppConfigService } from 'src/app/services/app-config';
 import { ProjectService } from 'src/app/services/projects.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
@@ -68,7 +68,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
     public appConfigService: AppConfigService,
     private dashBoardService: DashboardService,
     public brandService: BrandService,
-    private tiledeskAuthService: TiledeskAuthService
+    private GPTMysiteAuthService: GPTMysiteAuthService
   ) {
     const brand = brandService.getBrand();
     this.tparams = brand;
@@ -82,7 +82,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getBrowserLang();
-    this.user = this.tiledeskAuthService.getCurrentUser()
+    this.user = this.GPTMysiteAuthService.getCurrentUser()
     this.project = this.dashBoardService.project
     
     this.getUserAvailabilityAndRole()
@@ -220,7 +220,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
 
   onLogoutModalHandled() {
     this.notify.closeLogoutModal()
-    this.tiledeskAuthService.logOut();
+    this.GPTMysiteAuthService.logOut();
   }
 
   getBrowserLang() {
@@ -229,7 +229,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
 
   onOkExpiredSessionModal() {
     this.notify.onOkExpiredSessionModal();
-    this.tiledeskAuthService.logOut();
+    this.GPTMysiteAuthService.logOut();
   }
 
   goToPricing() {
@@ -241,8 +241,8 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
   }
 
   launchWidget() {
-    // if (window && window['tiledesk']) {
-    //   window['tiledesk'].open();
+    // if (window && window['GPTMysite']) {
+    //   window['GPTMysite'].open();
     // }
     window.open('mailto:' + this.contactUsEmail, 'mail')
   }
@@ -276,7 +276,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
   // ----------------------------------------
   goToWidgetPage() {
     this.router.navigate(['project/' + this.project._id + '/widget']);
-    this.notify.closeModalInstallTiledeskModal()
+    this.notify.closeModalInstallGPTMysiteModal()
   }
 
 
@@ -383,7 +383,7 @@ export class NotificationMessageComponent implements OnInit, OnDestroy {
 
 
   // -----------------------------------------------------------------
-  // DOWNGRADE PLAN TO FREE - DO I NEED TO DO SERVICE ON TILEDESK API?
+  // DOWNGRADE PLAN TO FREE - DO I NEED TO DO SERVICE ON GPTMysite API?
   // ------------------------------------------------------------------
 
   // downgradePlanToFree() {

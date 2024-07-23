@@ -61,8 +61,8 @@ export class UsersService {
   public SERVER_BASE_URL: string;
 
   // private
-  private URL_TILEDESK_PROJECTS: string;
-  private tiledeskToken: string;
+  private URL_GPTMysite_PROJECTS: string;
+  private GPTMysiteToken: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
   constructor(
@@ -89,7 +89,7 @@ export class UsersService {
   initialize(serverBaseUrl: string){
     this.logger.log('[USER-SERV] - initialize serverBaseUrl', serverBaseUrl);
     this.SERVER_BASE_URL = serverBaseUrl;
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
   }
 
 //   getAppConfigAndBuildUrl() {
@@ -266,7 +266,7 @@ export class UsersService {
     return this._httpClient.get<UserModel[]>(url, httpOptions)
   }
 
-//   // https://tiledesk-server-pre.herokuapp.com/users_util/5fb3a3c84eff0000345282ef
+//   // https://GPTMysite-server-pre.herokuapp.com/users_util/5fb3a3c84eff0000345282ef
 
 //   // ---------------------------------------------------------
 //   // Delete user account 

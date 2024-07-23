@@ -1,4 +1,4 @@
-export class TiledeskConnectors {
+export class GPTMysiteConnectors {
 
   constructor(drawerId, classes, connectors) {
     //this.connectors = [];
@@ -229,7 +229,7 @@ export class TiledeskConnectors {
     // console.log("[JS] blocks :---> ", this.blocks);
     // console.log("[JS] connectors :---> ", this.connectors);
     // console.log("[JS] arrayOfDeletedConnectors :---> ", arrayOfDeletedConnectors);
-    return arrayOfDeletedConnectors; 
+    return arrayOfDeletedConnectors;
   }
 
 
@@ -410,7 +410,7 @@ export class TiledeskConnectors {
           // console.log("un-connectable");
         }
       }, false);
-      /* 
+      /*
       target.addEventListener("click", (event) => {
           // console.log("clicked el.id:", event.target.id)
           let el = event.target;
@@ -537,7 +537,7 @@ export class TiledeskConnectors {
     if (el && el.classList && el.classList.contains(keyClass)) {
       return el;
     }
-    // // console.log('[TILEDESK-CONNECTORS] searchClassInParents ->', keyClass);
+    // // console.log('[GPTMysite-CONNECTORS] searchClassInParents ->', keyClass);
     let parent = el.parentElement;
     while (parent !== null) {
       if (parent && parent.classList && parent.classList.contains(keyClass)) {
@@ -718,7 +718,7 @@ export class TiledeskConnectors {
     connector.setAttributeNS(null, "class", this.classes["path"]);
   }
 
-  /** 
+  /**
    * Creates or modify a connector in HTML
    */
   #drawConnector(id, backPoint, frontPoint, attributes=null) {
@@ -801,7 +801,7 @@ export class TiledeskConnectors {
       rect.setAttributeNS(null, "height", String(rectHeight));
       rect.setAttributeNS(null, "fill", "#fcfafa");
       rect.setAttributeNS(null, "stroke", "none");
-      rect.setAttributeNS(null, "rx", "8"); 
+      rect.setAttributeNS(null, "rx", "8");
       // rect.setAttributeNS(null, "style", `left:${x}; top:${y};`);
       group.appendChild(rect);
       group.appendChild(lineText);
@@ -831,7 +831,7 @@ export class TiledeskConnectors {
       if(lineText.textContent && lineText.textContent !== ''){
         rectWidth = bbox.width + 10;
         rectHeight = bbox.height + 10;
-      } 
+      }
       const x = (frontPoint.x + backPoint.x) / 2;
       const y = (frontPoint.y + backPoint.y) / 2;
       lineText.setAttributeNS(null, "x", String(x));
@@ -940,7 +940,7 @@ export class TiledeskConnectors {
         } else {
           this.deleteConnector(conn_id, false, true);
         }
-        
+
       }
     };
   }

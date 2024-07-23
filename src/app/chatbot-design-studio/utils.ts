@@ -28,9 +28,9 @@ export enum SETTINGS_SECTION {
 }
 
 export enum EXTERNAL_URL {
-    getchatbotinfo = "https://tiledesk.com/community/getchatbotinfo/chatbotId/",
-    getFulFillMentDoc = 'https://developer.tiledesk.com/resolution-bot-programming/webhook-data-model',
-    getChangelogUrl = 'https://feedback.tiledesk.com/changelog'
+    getchatbotinfo = "https://GPTMysite.com/community/getchatbotinfo/chatbotId/",
+    getFulFillMentDoc = 'https://developer.GPTMysite.com/resolution-bot-programming/webhook-data-model',
+    getChangelogUrl = 'https://feedback.GPTMysite.com/changelog'
 }
 
 export enum TYPE_MATH_OPERATOR {
@@ -359,8 +359,8 @@ export function getEmbedUrl(url: string) {
 //         label: 'Most used',
 //         elements: [
 //             { name: 'last_user_text', value: 'last_user_text', description: 'The last text the user typed. This is overwritten on each user reply', src: '', icon: 'send' },
-//             { name: 'user_country', value: 'user_country', description: 'The user Country as decoded by Tiledesk',src: '', icon: 'language' },
-//             { name: 'user_city', value: 'user_city', description: 'The user City as decoded by Tiledesk', src: '', icon: 'language' },
+//             { name: 'user_country', value: 'user_country', description: 'The user Country as decoded by GPTMysite',src: '', icon: 'language' },
+//             { name: 'user_city', value: 'user_city', description: 'The user City as decoded by GPTMysite', src: '', icon: 'language' },
 //             { name: 'user_language', value: 'user_language', description: 'The user language decoded on channel', src: '', icon: 'language' },
 //             { name: 'transcript', value: 'transcript', description: 'All the conversation messages exchanged with this chatbot during the chat', src: '', icon: 'description'},
 //         ]
@@ -374,7 +374,7 @@ export function getEmbedUrl(url: string) {
 //             { name: 'last_message_id', value: 'last_message_id', description: 'The unique ID of the last message sent', src: '', icon: 'textsms' },
 //             { name: 'conversation_id', value: 'conversation_id', description: 'This conversation unique ID', src: '', icon: 'textsms' },
 //             { name: 'chatbot_name', value: 'chatbot_name', description: 'This chatbot name', src: '', icon: 'person' },
-//             { name: 'user_id', value: 'user_id', description: 'The user unique ID inside Tiledesk database', src: '', icon: 'person' },
+//             { name: 'user_id', value: 'user_id', description: 'The user unique ID inside GPTMysite database', src: '', icon: 'person' },
 //             { name: 'user_agent', value: 'user_agent', description: 'The web user agent where this conversation initiated', src: '', icon: 'person' },
 //             { name: 'chatChannel', value: 'chatChannel', description: 'The channel where this conversation belongs to. Ex. "web", "whatsapp", "facebook", "telegram"', src: '', icon: 'language' },
 //             { name: 'user_source_page', value: 'user_source_page', description: 'The page where this conversations is runinng. Only available on channel "web"', src: '', icon: 'language' },

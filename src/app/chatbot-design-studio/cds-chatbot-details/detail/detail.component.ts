@@ -11,7 +11,7 @@ import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance'
 import { AppConfigService } from 'src/app/services/app-config';
 import { avatarPlaceholder, getColorBck } from 'src/chat21-core/utils/utils-user';
 import { UploadService } from 'src/chat21-core/providers/abstract/upload.service';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { UserModel } from 'src/chat21-core/models/user';
 import { UploadModel } from 'src/chat21-core/models/upload';
 import { ImageRepoService } from 'src/chat21-core/providers/abstract/image-repo.service';
@@ -26,7 +26,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
 
   @ViewChild('fileInputBotProfileImage', { static: false }) fileInputBotProfileImage: any;
   @ViewChild('editbotbtn', { static: false }) private elementRef: ElementRef;
-  
+
   @Input() selectedChatbot: Chatbot;
   @Input() project: Project;
   @Input() isVisibleDEP: boolean;
@@ -71,7 +71,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
   private logger: LoggerService = LoggerInstance.getInstance()
   constructor(
     private uploadService: UploadService,
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
     private faqKbService: FaqKbService,
     private departmentService: DepartmentService,
     private notify: NotifyService,
@@ -82,7 +82,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
 
   ngOnInit(): void {
     this.getDeptsByProjectId();
-    this.user = this.tiledeskAuthService.getCurrentUser()
+    this.user = this.GPTMysiteAuthService.getCurrentUser()
     // this.checkBotImageUploadIsComplete();
   }
 
@@ -233,7 +233,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
 
   translateAndPresentModalBotAssociatedWithDepartment() {
     let parametres = { bot_name: this.selectedChatbot.name, dept_name: this.selected_dept_name };
-    
+
     swal({
       title: this.translationsMap.get('Done') + "!",
       text: this.translate.instant("BotHasBeenAssociatedWithDepartment", parametres),
@@ -253,7 +253,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
     if (this.selectedChatbot._id) {
       let url = this.imageRepoService.getImagePhotoUrl(this.selectedChatbot._id)
       this.checkImageExists(url, (existImage)=> {
-        existImage? this.selectedChatbot.imageURL = url: null; 
+        existImage? this.selectedChatbot.imageURL = url: null;
       })
     }
 
@@ -314,7 +314,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
   //       self.botProfileImageExist = imageExists
 
   //       self.logger.log('[CDS-CHATBOT-DTLS] BOT PROFILE IMAGE (FAQ-COMP) - BOT PROFILE IMAGE EXIST ? ', imageExists, 'usecase native')
-       
+
 
   //       self.setImageProfileUrl_Native(baseUrl)
 
@@ -322,7 +322,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
   //       self.botProfileImageExist = imageExists
 
   //       self.logger.log('[CDS-CHATBOT-DTLS] BOT PROFILE IMAGE (FAQ-COMP) - BOT PROFILE IMAGE EXIST ? ', imageExists, 'usecase native')
-       
+
   //     }
   //   })
   // }
@@ -338,7 +338,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
     };
   }
 
- 
+
 
   // checkBotImageUploadIsComplete() {
   //   this.logger.log('[CDS-CHATBOT-DTLS] checkBotImageUploadIsComplete')
@@ -445,7 +445,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
         }
       }
 
-      
+
     }
 
   }
@@ -458,13 +458,13 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
     that.logger.debug('[IMAGE-UPLOAD] AppComponent::uploadSingle::', file);
     // const file = this.selectedFiles.item(0);
     const currentUpload = new UploadModel(file);
-    
+
     this.uploadService.uploadProfile(this.selectedChatbot._id, currentUpload).then(downloadURL => {
       that.logger.debug(`[IMAGE-UPLOAD] Successfully uploaded file and got download link - ${downloadURL}`);
 
       let url = this.imageRepoService.getImagePhotoUrl(this.selectedChatbot._id)
       this.checkImageExists(url, (existImage)=> {
-        existImage? this.selectedChatbot.imageURL = url: null; 
+        existImage? this.selectedChatbot.imageURL = url: null;
       })
       that.isFilePendingToUpload = false;
       // return downloadURL;
@@ -491,7 +491,7 @@ export class CDSDetailBotDetailComponent extends BotsBaseComponent implements On
       delete_bot_image_btn.blur();
     }).catch((error)=> {
       this.logger.error('[CDS-CHATBOT-DTLS] BOT PROFILE IMAGE (FAQ-COMP) deleteUserProfileImage ERORR:', error)
-    })    
+    })
   }
 
   editBot() {

@@ -31,7 +31,7 @@ export class CdsFormComponent implements OnInit, OnChanges {
 
   langBot: string;
   fields = new Array() as Field[];;
-  URL_to_form_more_info = "https://gethelp.tiledesk.com/articles/tiledesk-chatbot-forms/";
+  URL_to_form_more_info = "https://gethelp.GPTMysite.com/articles/GPTMysite-chatbot-forms/";
 
   // modal
   displayMODAL = false;
@@ -63,7 +63,7 @@ export class CdsFormComponent implements OnInit, OnChanges {
   translateparam = { selectedFormName: "", description_key: "" };
 
   private logger: LoggerService = LoggerInstance.getInstance();
-  
+
   constructor(
     public translate: TranslateService,
     private route: ActivatedRoute,
@@ -97,7 +97,7 @@ export class CdsFormComponent implements OnInit, OnChanges {
     this.idForm = "id-form-000";
     this.modelsOfForm = [];
     this.cancelCommands = [];
-    
+
     let modelsFactory = new FormModelsFactory()
     this.modelsOfForm = modelsFactory.getModels();
     this.selectedForm = this.modelsOfForm[0];
@@ -324,8 +324,8 @@ export class CdsFormComponent implements OnInit, OnChanges {
 
   /** Event modal confirm delete field */
   confirmDeleteModal(index: string) {
-    this.logger.log('[FORM-COMP] confirmDeleteModal index ', index) 
-    this.logger.log('[FORM-COMP] confirmDeleteModal this.idForm ', this.idForm) 
+    this.logger.log('[FORM-COMP] confirmDeleteModal index ', index)
+    this.logger.log('[FORM-COMP] confirmDeleteModal this.idForm ', this.idForm)
     if (index === this.idForm) {
     // if (index === this.selectedFormId) {
 
@@ -390,7 +390,7 @@ export class CdsFormComponent implements OnInit, OnChanges {
   }
 
   // -------------------------------------
-  // Form Field 
+  // Form Field
   // -------------------------------------
   /** Event modal close delete field */
   closeDeleteModal(i: number) {

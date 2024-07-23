@@ -19,8 +19,8 @@ export class OpenaiService {
   
 
   // private
-  private URL_TILEDESK_OPENAI: string;
-  private tiledeskToken: string;
+  private URL_GPTMysite_OPENAI: string;
+  private GPTMysiteToken: string;
   private GPT_API_URL: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
@@ -35,9 +35,9 @@ export class OpenaiService {
     this.logger.log('[OPENAI.SERVICE] - initialize serverBaseUrl', serverBaseUrl);
     this.project_id = project_id;
     this.SERVER_BASE_URL = serverBaseUrl;
-    this.URL_TILEDESK_OPENAI = this.SERVER_BASE_URL + this.project_id
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
-    this.GPT_API_URL = "http://tiledesk-backend.h8dahhe4edc7cahh.francecentral.azurecontainer.io:8000/api";
+    this.URL_GPTMysite_OPENAI = this.SERVER_BASE_URL + this.project_id
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
+    this.GPT_API_URL = "http://GPTMysite-backend.h8dahhe4edc7cahh.francecentral.azurecontainer.io:8000/api";
   }
 
 
@@ -49,11 +49,11 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_OPENAI + "/openai/";
+    const url = this.URL_GPTMysite_OPENAI + "/openai/";
     this.logger.debug('[OPENAI.SERVICE] - preview prompt URL: ', url);
 
     return this.httpClient.post(url, data, httpOptions);
@@ -71,11 +71,11 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_OPENAI + "/kb/qa";
+    const url = this.URL_GPTMysite_OPENAI + "/kb/qa";
     this.logger.debug('[OPENAI.SERVICE] - preview prompt URL: ', url);
 
     return this.httpClient.post(url, data, httpOptions);
@@ -86,11 +86,11 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_OPENAI + "/kb/namespace/all";
+    const url = this.URL_GPTMysite_OPENAI + "/kb/namespace/all";
     this.logger.debug('[OPENAI.SERVICE] - getAllNamespaces URL: ', url);
 
     return this.httpClient.get<Namespace[]>(url, httpOptions);
@@ -105,12 +105,12 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken // remove it for pugliai endpoint
+        'Authorization': this.GPTMysiteToken // remove it for pugliai endpoint
       })
     }
 
     // const url = this.GPT_API_URL + "/qa";
-    const url = this.URL_TILEDESK_OPENAI + "/kbsettings/qa";
+    const url = this.URL_GPTMysite_OPENAI + "/kbsettings/qa";
     this.logger.debug('[OPENAI.SERVICE] - ask gpt URL: ', url);
 
     return this.httpClient.post(url, data, httpOptions);
@@ -120,12 +120,12 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken // remove it for pugliai endpoint
+        'Authorization': this.GPTMysiteToken // remove it for pugliai endpoint
       })
     }
 
     // const url = this.GPT_API_URL + "/scrape";
-    const url = this.URL_TILEDESK_OPENAI + "/kbsettings/startscrape";
+    const url = this.URL_GPTMysite_OPENAI + "/kbsettings/startscrape";
     this.logger.debug('[OPENAI.SERVICE] - scraping URL: ', url);
 
     return this.httpClient.post(url, data, httpOptions);
@@ -136,12 +136,12 @@ export class OpenaiService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken // remove it for pugliai endpoint
+        'Authorization': this.GPTMysiteToken // remove it for pugliai endpoint
       })
     }
 
     // const url = this.GPT_API_URL + "/scrape/status";
-    const url = this.URL_TILEDESK_OPENAI + "/kbsettings/checkstatus";
+    const url = this.URL_GPTMysite_OPENAI + "/kbsettings/checkstatus";
     this.logger.debug('[OPENAI.SERVICE] - check scraping URL: ', url);
 
     return this.httpClient.post(url, data, httpOptions);

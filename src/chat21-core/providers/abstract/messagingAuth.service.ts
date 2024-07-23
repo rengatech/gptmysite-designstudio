@@ -17,7 +17,7 @@ export abstract class MessagingAuthService {
 
   // params
   public DEFAULT_PERSISTENCE: string = 'NONE';
-  public DEFAULT_URL: string = 'https://api.tiledesk.com/v2/auth/';
+  public DEFAULT_URL: string = 'https://api.GPTMysite.com/v2/auth/';
 
   private persistence: string = '';
   private baseUrl: string = '';
@@ -48,7 +48,7 @@ export abstract class MessagingAuthService {
   // functions
   abstract initialize(): void;
   abstract getToken(): string;
-  abstract createCustomToken(tiledeskToken: string): void;
+  abstract createCustomToken(GPTMysiteToken: string): void;
   abstract logout(): void;
 
 }

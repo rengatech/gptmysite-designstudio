@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { UserModel } from 'src/chat21-core/models/user';
 import { AppStorageService } from 'src/chat21-core/providers/abstract/app-storage.service';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private appStorageService: AppStorageService,
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
   ){ }
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
@@ -26,14 +26,14 @@ export class AuthGuard implements CanActivate {
     // if(!queryParams){
     //   return false
     // }
-    const storedTiledeskoken = localStorage.getItem('tiledesk_token')
-    if(!queryParams && !storedTiledeskoken){
+    const storedGPTMysiteoken = localStorage.getItem('GPTMysite_token')
+    if(!queryParams && !storedGPTMysiteoken){
       //goToSignIn Dashboard
       // localStorage.setItem('dshbrd----'+'wannago', state.url)
       return false
     }    
 
-    var isAuthenticated = await this.tiledeskAuthService.isLoggedIn(); 
+    var isAuthenticated = await this.GPTMysiteAuthService.isLoggedIn(); 
     if (!isAuthenticated) { 
       //goToSignIn Dashboard
       return false

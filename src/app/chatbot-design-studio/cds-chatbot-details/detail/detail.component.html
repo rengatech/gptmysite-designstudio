@@ -24,15 +24,15 @@
       <div class="col-sm-10">
         <!-- [ngStyle]="{'margin-left':botType === 'dialogflow' ? '35px' : 0 }" -->
         <div class="card-avatar" style="display: flex;align-items: center;">
-          <div class="bot_avatar">  
-            <img class="bot-profile-img" [src]="selectedChatbot?.imageURL" onerror="this.src='assets/images/avatar_bot_tiledesk.svg'"/>
+          <div class="bot_avatar">
+            <img class="bot-profile-img" [src]="selectedChatbot?.imageURL" onerror="this.src='assets/images/avatar_bot_GPTMysite.svg'"/>
             <!-- <img class="bot-profile-img" [src]="selectedChatbot?.imageURL"/> -->
           </div>
 
 
           <label for="file-upload" class="custom-file-upload">
             <span *ngIf="!isFilePendingToUpload">
-              <i class="fa fa-cloud-upload"></i> 
+              <i class="fa fa-cloud-upload"></i>
               {{ 'UserProfile.UploadImage' | translate }}
             </span>
             <span *ngIf="isFilePendingToUpload">
@@ -93,12 +93,12 @@
         </label>
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
           <div class="input-group">
-            <input id="bot-default-selected-lang" 
-              class="input csd-chatbot-dtls-input" 
-              name="bot-default-selected-lang" 
+            <input id="bot-default-selected-lang"
+              class="input csd-chatbot-dtls-input"
+              name="bot-default-selected-lang"
               [(ngModel)]="botDefaultSelectedLang"
-              type="text" 
-              style="color:#808080" 
+              type="text"
+              style="color:#808080"
               disabled>
             <button id="csd-update-bot-btn" class="btn btn-primary pull-left cds-blue-button" (click)="updateBotLanguage()">
                 {{ 'Change' | translate }}
@@ -184,11 +184,11 @@
 
         <div class="input-group" style="margin-top: 6px;" *ngIf="depts_without_bot_array?.length > 0">
           <ng-select id="depSelect"
-            [items]="depts_without_bot_array" 
-            bindValue="id" 
+            [items]="depts_without_bot_array"
+            bindValue="id"
             bindLabel="name"
-            placeholder="{{'SelectDepartment'|translate}}" 
-            [(ngModel)]="selected_dept_id" 
+            placeholder="{{'SelectDepartment'|translate}}"
+            [(ngModel)]="selected_dept_id"
             (change)="onSelectDept()">
           </ng-select>
 

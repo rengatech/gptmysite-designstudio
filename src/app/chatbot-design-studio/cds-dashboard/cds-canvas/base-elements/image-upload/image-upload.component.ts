@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
 import { UploadService } from 'src/chat21-core/providers/abstract/upload.service';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { UserModel } from 'src/chat21-core/models/user';
 import { UploadModel } from 'src/chat21-core/models/upload';
 
@@ -15,9 +15,9 @@ import { UploadModel } from 'src/chat21-core/models/upload';
   styleUrls: ['./image-upload.component.scss']
 })
 export class CDSImageUploadComponent implements OnInit {
-  
+
   @ViewChild('imageUploaded', { static: false }) myIdentifier: ElementRef;
-  
+
   @Input() metadata: Metadata;
   @Output() onChangeMetadata = new EventEmitter<Metadata>();
   @Output() onDeletedMetadata = new EventEmitter<any>();
@@ -29,7 +29,7 @@ export class CDSImageUploadComponent implements OnInit {
   private user: UserModel
 
   uuid: string = uuidv4()
-  
+
   selectedFiles: FileList;
   isFilePendingToUpload: Boolean = false;
   optionSelected: 'upload' | 'link' = 'upload'
@@ -37,17 +37,17 @@ export class CDSImageUploadComponent implements OnInit {
   arrayFilesLoad: Array<any> = [];
 
   private logger: LoggerService = LoggerInstance.getInstance()
-  
+
   constructor(
     private uploadService: UploadService,
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
     private sanitizer: DomSanitizer,
   ) { }
 
   // SYSTEM FUNCTIONS //
   ngOnInit(): void {
     this.initializeApp();
-    this.user = this.tiledeskAuthService.getCurrentUser();
+    this.user = this.GPTMysiteAuthService.getCurrentUser();
   }
 
   initializeApp(){
@@ -147,7 +147,7 @@ export class CDSImageUploadComponent implements OnInit {
       } else {
         this.isFilePendingToUpload = true;
       }
-      
+
       const that = this;
       if (event.target.files && event.target.files[0]) {
           const nameFile = event.target.files[0].name;
@@ -233,7 +233,7 @@ export class CDSImageUploadComponent implements OnInit {
       // 2 - carico immagine
       const file = this.selectedFiles.item(0);
       this.uploadSingle(metadata, file, '') //GABBBBBBBB
-      // this.uploadSingle(metadata, file); 
+      // this.uploadSingle(metadata, file);
       // this.isSelected = false;
     }
   }
@@ -245,7 +245,7 @@ export class CDSImageUploadComponent implements OnInit {
     that.logger.debug('[IMAGE-UPLOAD] AppComponent::uploadSingle::', metadata, file);
     // const file = this.selectedFiles.item(0);
     const currentUpload = new UploadModel(file);
- 
+
     this.uploadService.upload(this.user.uid, currentUpload).then(data => {
       that.logger.debug(`[IMAGE-UPLOAD] Successfully uploaded file and got download link - ${data}`);
 
@@ -395,13 +395,13 @@ export class CDSImageUploadComponent implements OnInit {
   onDeletePathElement(event){
     this.logger.log('[IMAGE-UPLOAD] onDeletePathElement', event)
     this.uploadService.delete(this.user.uid, this.metadata.src).then((result)=>{
-      
+
       this.isFilePendingToUpload = false;
       this.onDeletedMetadata.emit();
     }).catch((error)=> {
       this.logger.error('[CDS-CHATBOT-DTLS] BOT PROFILE IMAGE (FAQ-COMP) deleteUserProfileImage ERORR:', error)
       this.isFilePendingToUpload = false;
-    }) 
+    })
 
   }
 
@@ -471,9 +471,9 @@ export class CDSImageUploadComponent implements OnInit {
         }
       });
     } catch (error) {
-      return isAcceptFile; 
+      return isAcceptFile;
     }
-    return isAcceptFile; 
+    return isAcceptFile;
 
     let accept_files = '*/*';
     // this.logger.log('[CONVS-DETAIL] > checkAcceptedFile - fileUploadAccept: ',this.appConfigService.getConfig().fileUploadAccept)

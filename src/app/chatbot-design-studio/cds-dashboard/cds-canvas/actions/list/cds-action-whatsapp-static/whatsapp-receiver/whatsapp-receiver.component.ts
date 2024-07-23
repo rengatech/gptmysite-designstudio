@@ -5,7 +5,7 @@ import { UserModel } from 'src/chat21-core/models/user';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { UploadService } from 'src/chat21-core/providers/abstract/upload.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 
 @Component({
   selector: 'cds-whatsapp-receiver',
@@ -47,14 +47,14 @@ export class CdsWhatsappReceiverComponent implements OnInit {
     public sanitizer: DomSanitizer,
     public elementRef: ElementRef,
     private uploadService: UploadService,
-    private tiledeskAuthService: TiledeskAuthService
+    private GPTMysiteAuthService: GPTMysiteAuthService
   ) {
 
   }
 
   ngOnInit(): void {
     this.logger.log("onInit receiver: ", this.receiver);
-    this.user = this.tiledeskAuthService.getCurrentUser();
+    this.user = this.GPTMysiteAuthService.getCurrentUser();
     this.onInputTemplate();
   }
 
@@ -406,7 +406,7 @@ export class CdsWhatsappReceiverComponent implements OnInit {
 
 
     }
-    
+
   }
 
   private uploadSingle(file) {
@@ -416,7 +416,7 @@ export class CdsWhatsappReceiverComponent implements OnInit {
     that.logger.debug('[IMAGE-UPLOAD] AppComponent::uploadSingle::', file);
     // const file = this.selectedFiles.item(0);
     const currentUpload = new UploadModel(file);
- 
+
     this.uploadService.upload(this.user.uid, currentUpload).then(data => {
       that.logger.debug(`[IMAGE-UPLOAD] Successfully uploaded file and got download link - ${data}`);
 
@@ -442,7 +442,7 @@ export class CdsWhatsappReceiverComponent implements OnInit {
   removeHeaderFile() {
     this.isFilePendingToUpload = true;
     this.uploadService.delete(this.user.uid, this.header_params[0].image.link).then((result)=>{
-      
+
       this.isFilePendingToUpload = false;
       this.fileUploadedName = "";
 
@@ -456,7 +456,7 @@ export class CdsWhatsappReceiverComponent implements OnInit {
     }).catch((error)=> {
       this.logger.error('[CDS-CHATBOT-DTLS] BOT PROFILE IMAGE (FAQ-COMP) deleteUserProfileImage ERORR:', error)
       this.isFilePendingToUpload = false;
-    })     
+    })
   }
 
 }

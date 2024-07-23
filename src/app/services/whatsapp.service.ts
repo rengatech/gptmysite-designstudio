@@ -14,7 +14,7 @@ export class WhatsappService {
 
   // private
   private WHATSAPP_API_URL: string;
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
   private project_id: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
@@ -29,7 +29,7 @@ export class WhatsappService {
   initialize(url: string, project_id: string){
     this.WHATSAPP_API_URL = url
     this.project_id = project_id
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
   }
 
   getAllTemplates() {

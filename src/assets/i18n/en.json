@@ -481,7 +481,7 @@
         "DeleteForm": "Delete form",
         "ConfirmDeleteForm": "Are you sure you want to delete the form?",
         "AreYouSureDeleteField":"Are you sure you want to delete the field?",
-        "MarkbotLabel": "You can use <a href='https://gethelp.tiledesk.com/articles/sending-images-videos-quick-replies-and-more/' target='_blank'>Markbot</a> to format your labels.",
+        "MarkbotLabel": "You can use <a href='https://gethelp.GPTMysite.com/articles/sending-images-videos-quick-replies-and-more/' target='_blank'>Markbot</a> to format your labels.",
         "InfoMessages": {
             "field_name": "Give a name to the Form field (ex: name _ User). The name can contain only letters numbers and _",
             "field_type": "Select the type of given that will be inserted in this field (ex: Text).",
@@ -753,7 +753,7 @@
     "CDSHeader": {
         "LinkCopiedToClipboard":"Link copied to clipboard"
     }
-    
 
-    
+
+
 }

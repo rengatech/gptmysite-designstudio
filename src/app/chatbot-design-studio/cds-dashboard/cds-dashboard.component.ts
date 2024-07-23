@@ -43,7 +43,7 @@ export class CdsDashboardComponent implements OnInit {
   IS_OPEN_INTENTS_LIST: boolean = true;
   IS_OPEN_PANEL_WIDGET: boolean = false;
 
-  
+
   project: Project;
   defaultDepartmentId: string;
   selectedChatbot: Chatbot
@@ -52,7 +52,7 @@ export class CdsDashboardComponent implements OnInit {
   isBetaUrl: boolean = false;
   showChangelog: boolean = false;
   BRAND_BASE_INFO = BRAND_BASE_INFO;
-  
+
   private logger: LoggerService = LoggerInstance.getInstance();
   constructor(
     private route: ActivatedRoute,
@@ -77,7 +77,7 @@ export class CdsDashboardComponent implements OnInit {
     this.hideShowWidget('hide');
   }
 
-  checkForChangelogNotify(): boolean { 
+  checkForChangelogNotify(): boolean {
     if(!BRAND_BASE_INFO['DOCS']){
       return false
     }
@@ -118,14 +118,14 @@ export class CdsDashboardComponent implements OnInit {
   }
 
   /**************** CUSTOM FUNCTIONS ****************/
-  /** 
+  /**
    * execute Async Functions In Sequence
    * Le funzioni async sono gestite in maniera sincrona ed eseguite in coda
-   * da aggiungere un loader durante il processo e se tutte vanno a buon fine 
+   * da aggiungere un loader durante il processo e se tutte vanno a buon fine
    * possiamo visualizzare lo stage completo
    */
   async executeAsyncFunctionsInSequence() {
-    this.logger.log('[CDS DSHBRD] executeAsyncFunctionsInSequence -------------> ');    
+    this.logger.log('[CDS DSHBRD] executeAsyncFunctionsInSequence -------------> ');
     try {
       const getTranslations = await this.getTranslations();
       this.logger.log('[CDS DSHBRD] Risultato 1:', getTranslations);
@@ -184,16 +184,16 @@ export class CdsDashboardComponent implements OnInit {
   /** hideShowWidget */
   private hideShowWidget(status: "hide" | "show") {
     try {
-      if (window && window['tiledesk']) {
-        this.logger.log('[CDS DSHBRD] HIDE WIDGET ', window['tiledesk'])
+      if (window && window['GPTMysite']) {
+        this.logger.log('[CDS DSHBRD] HIDE WIDGET ', window['GPTMysite'])
         if (status === 'hide') {
-          window['tiledesk'].hide();
+          window['GPTMysite'].hide();
         } else if (status === 'show') {
-          window['tiledesk'].show();
+          window['GPTMysite'].show();
         }
       }
     } catch (error) {
-      this.logger.error('tiledesk_widget_hide ERROR', error)
+      this.logger.error('GPTMysite_widget_hide ERROR', error)
     }
   }
 
@@ -226,6 +226,6 @@ export class CdsDashboardComponent implements OnInit {
     }
     this.activeSidebarSection = event;
   }
-  /*****************************************************/ 
+  /*****************************************************/
 
 }

@@ -16,7 +16,7 @@ import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance'
 import { Chatbot } from 'src/app/models/faq_kb-model';
 import { EXTERNAL_URL, SETTINGS_SECTION, TYPE_INTENT_NAME } from '../../utils';
 import { CdsPublishOnCommunityModalComponent } from '../../../modals/cds-publish-on-community-modal/cds-publish-on-community-modal.component';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { environment } from 'src/environments/environment';
 import { CdsModalActivateBotComponent } from 'src/app/modals/cds-modal-activate-bot/cds-modal-activate-bot.component';
 import { LOGO_MENU_ITEMS, PLAY_MENU_ITEMS, SHARE_MENU_ITEMS } from '../../utils-menu';
@@ -33,7 +33,7 @@ const swal = require('sweetalert');
   styleUrls: ['./cds-header.component.scss']
 })
 export class CdsHeaderComponent implements OnInit {
-  
+
   @Input() IS_OPEN_SIDEBAR: boolean;
   // @Input() projectID: string;
   // @Input() defaultDepartmentId: string;
@@ -72,10 +72,10 @@ export class CdsHeaderComponent implements OnInit {
     private multichannelService: MultichannelService,
     private dashboardService: DashboardService,
     private intentService: IntentService,
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
     private notify: NotifyService,
     private translate: TranslateService
-  ) { 
+  ) {
     this.manageRouteChanges();
   }
 
@@ -140,13 +140,13 @@ export class CdsHeaderComponent implements OnInit {
       // this.logger.log('PUBLIC-KEY (SIGNUP) - mt is', this.MT);
     }
     this.logger.log('PUBLIC-KEY (TRY_ON_WA) - mt is', this.TRY_ON_WA);
-    PLAY_MENU_ITEMS.map(el => { 
+    PLAY_MENU_ITEMS.map(el => {
         if(el.key === 'WHATSAPP' && this.TRY_ON_WA){
           el.status = 'active'
         }else if(el.key === 'WHATSAPP' && !this.TRY_ON_WA){
           el.status = 'inactive'
-        }  
-    }) 
+        }
+    })
 
   }
 
@@ -256,11 +256,11 @@ export class CdsHeaderComponent implements OnInit {
         window.open(dashbordBaseUrl, '_self').focus();
         break;
       case 'LOG_OUT':
-        this.tiledeskAuthService.logOut()
+        this.GPTMysiteAuthService.logOut()
         localStorage.removeItem('user')
         let DASHBOARD_URL = this.appConfigService.getConfig().dashboardBaseUrl + '#/login'
-        if (window && window['tiledesk']) {
-          window['tiledesk'].logout()
+        if (window && window['GPTMysite']) {
+          window['GPTMysite'].logout()
         }
         window.open(DASHBOARD_URL, '_self').focus();
         break;
@@ -269,12 +269,12 @@ export class CdsHeaderComponent implements OnInit {
         break;
       case 'COPY_LINK':{
         let testItOutUrl = this.appConfigService.getConfig().widgetBaseUrl + "assets/twp" + '/chatbot-panel.html' +
-                                '?tiledesk_projectid=' + this.projectID + 
-                                '&tiledesk_participants=bot_' + this.selectedChatbot._id + 
-                                "&tiledesk_departmentID=" + this.defaultDepartmentId + 
-                                "&tiledesk_hideHeaderCloseButton=true" +
-                                "&tiledesk_widgetTitle="+ encodeURI(this.selectedChatbot.name) +
-                                "&tiledesk_preChatForm=false" +
+                                '?GPTMysite_projectid=' + this.projectID +
+                                '&GPTMysite_participants=bot_' + this.selectedChatbot._id +
+                                "&GPTMysite_departmentID=" + this.defaultDepartmentId +
+                                "&GPTMysite_hideHeaderCloseButton=true" +
+                                "&GPTMysite_widgetTitle="+ encodeURI(this.selectedChatbot.name) +
+                                "&GPTMysite_preChatForm=false" +
                                 "&td_draft=true"
           navigator.clipboard.writeText(testItOutUrl)
           this.notify.showWidgetStyleUpdateNotification(this.translationsMap.get('CDSHeader.LinkCopiedToClipboard'), 2, 'done')
@@ -282,12 +282,12 @@ export class CdsHeaderComponent implements OnInit {
         break;
       case 'OPEN_NEW_PAGE':{
         let testItOutUrl = this.appConfigService.getConfig().widgetBaseUrl + "assets/twp" + '/chatbot-panel.html' +
-                              '?tiledesk_projectid=' + this.projectID + 
-                              '&tiledesk_participants=bot_' + this.selectedChatbot._id + 
-                              "&tiledesk_departmentID=" + this.defaultDepartmentId + 
-                              "&tiledesk_hideHeaderCloseButton=true" +
-                              "&tiledesk_widgetTitle="+ encodeURI(this.selectedChatbot.name) +
-                              "&tiledesk_preChatForm=false" +
+                              '?GPTMysite_projectid=' + this.projectID +
+                              '&GPTMysite_participants=bot_' + this.selectedChatbot._id +
+                              "&GPTMysite_departmentID=" + this.defaultDepartmentId +
+                              "&GPTMysite_hideHeaderCloseButton=true" +
+                              "&GPTMysite_widgetTitle="+ encodeURI(this.selectedChatbot.name) +
+                              "&GPTMysite_preChatForm=false" +
                               "&td_draft=true"
         window.open(testItOutUrl, '_blank')
         }
@@ -298,14 +298,14 @@ export class CdsHeaderComponent implements OnInit {
       case 'WEB':
         this.openTestSiteInPopupWindow()
         break;
-        
+
     }
   }
 
   openTestSiteInPopupWindow() {
     // const testItOutBaseUrl = this.TESTSITE_BASE_URL.substring(0, this.TESTSITE_BASE_URL.lastIndexOf('/'));
     // const testItOutUrl = testItOutBaseUrl + '/chatbot-panel.html'
-    // const url = testItOutUrl + '?tiledesk_projectid=' + this.projectID + '&tiledesk_participants=bot_' + this.id_faq_kb + "&tiledesk_departmentID=" + this.defaultDepartmentId + '&td_draft=true'
+    // const url = testItOutUrl + '?GPTMysite_projectid=' + this.projectID + '&GPTMysite_participants=bot_' + this.id_faq_kb + "&GPTMysite_departmentID=" + this.defaultDepartmentId + '&td_draft=true'
     // let params = `toolbar=no,menubar=no,width=815,height=727,left=100,top=100`;
     // window.open(url, '_blank', params);
     let intentStart = this.intentService.listOfIntents.find(obj => ( obj.intent_display_name.trim() === TYPE_INTENT_NAME.DISPLAY_NAME_START));
@@ -315,7 +315,7 @@ export class CdsHeaderComponent implements OnInit {
 
   private segmentChatbotPublished(){
     const that = this
-    let user = this.tiledeskAuthService.getCurrentUser();
+    let user = this.GPTMysiteAuthService.getCurrentUser();
     let countIntents = this.intentService.listOfIntents.length;
     if(window['analytics']){
       try {
@@ -325,7 +325,7 @@ export class CdsHeaderComponent implements OnInit {
       } catch (err) {
         this.logger.error('Event:Publish Chatbot [page] error', err);
       }
-  
+
       try {
         window['analytics'].identify(user.uid, {
           name: user.firstname + ' ' + user.lastname,

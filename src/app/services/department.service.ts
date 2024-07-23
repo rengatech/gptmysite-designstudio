@@ -17,12 +17,12 @@ export class DepartmentService {
 
   // private persistence: string;
   private SERVER_BASE_URL: string;
-  private URL_TILEDESK_DEPARTMENTS: string;
+  private URL_GPTMysite_DEPARTMENTS: string;
 
   SERVER_BASE_PATH: string;
   project_id: any;
 
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
 
@@ -35,9 +35,9 @@ export class DepartmentService {
   initialize(serverBaseUrl: string, projectId: string){
     this.SERVER_BASE_URL = serverBaseUrl;
     this.project_id = projectId
-    this.URL_TILEDESK_DEPARTMENTS = this.SERVER_BASE_URL + projectId + '/departments/';
-    this.logger.info('[DEPTS-SERV] initialize', serverBaseUrl, this.URL_TILEDESK_DEPARTMENTS)
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
+    this.URL_GPTMysite_DEPARTMENTS = this.SERVER_BASE_URL + projectId + '/departments/';
+    this.logger.info('[DEPTS-SERV] initialize', serverBaseUrl, this.URL_GPTMysite_DEPARTMENTS)
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
   }
 
 
@@ -50,12 +50,12 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     // const url = `http://localhost:3000/app1/departments/`;
     // const url = `http://api.chat21.org/app1/departments/;
-    const url = this.URL_TILEDESK_DEPARTMENTS;
+    const url = this.URL_GPTMysite_DEPARTMENTS;
     this.logger.log('[DEPTS-SERV] - GET DEPTS AS OLD WIDGET VERSION', url);
 
     return this.httpClient
@@ -70,7 +70,7 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -89,7 +89,7 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -112,11 +112,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + 'allstatus';
+    const url = this.URL_GPTMysite_DEPARTMENTS + 'allstatus';
     this.logger.log('[DEPTS-SERV] GET DEPTS ALL STATUS - DEPTS URL', url);
     return this.httpClient
       .get<Department[]>(url, httpOptions)
@@ -126,7 +126,7 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -141,11 +141,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + 'allstatus';
+    const url = this.URL_GPTMysite_DEPARTMENTS + 'allstatus';
     this.logger.log('[DEPTS-SERV] GET DEPTS TO PROMISE - DEPTS URL', url);
 
     return this.httpClient
@@ -167,11 +167,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    let url = this.URL_TILEDESK_DEPARTMENTS + id;
+    let url = this.URL_GPTMysite_DEPARTMENTS + id;
     // url += `${id}`;
     this.logger.log('[DEPTS-SERV] GET DEPT BY ID - URL', url);
 
@@ -195,11 +195,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS;
+    const url = this.URL_GPTMysite_DEPARTMENTS;
 
     const body = {
       'name': deptName,
@@ -229,13 +229,13 @@ export class DepartmentService {
    */
   public deleteDeparment(id: string) {
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + id;
+    const url = this.URL_GPTMysite_DEPARTMENTS + id;
     this.logger.log('[DEPTS-SERV] DELETE DEPT URL ', url);
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -253,11 +253,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    let url = this.URL_TILEDESK_DEPARTMENTS + id;
+    let url = this.URL_GPTMysite_DEPARTMENTS + id;
     // url += id;
     this.logger.log('[DEPTS-SERV] UPDATE DEPT - URL ', url);
 
@@ -282,11 +282,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    let url = this.URL_TILEDESK_DEPARTMENTS + deptid
+    let url = this.URL_GPTMysite_DEPARTMENTS + deptid
     this.logger.log('[DEPTS-SERV] - UPDATE EXISTING DEPT WITH SELECED BOT - URL', url);
 
     const body = { 'id_bot': id_bot };
@@ -307,11 +307,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + dept_id;
+    const url = this.URL_GPTMysite_DEPARTMENTS + dept_id;
     this.logger.log('UPDATE DEPT STATUS - URL ', url);
 
     const body = { 'status': status };
@@ -329,11 +329,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + id;
+    const url = this.URL_GPTMysite_DEPARTMENTS + id;
     this.logger.log('[DEPTS-SERV] UPDATE DEFAULT DEPARTMENT ONLINE MSG URL  ', url);
 
 
@@ -353,11 +353,11 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    const url = this.URL_TILEDESK_DEPARTMENTS + id;
+    const url = this.URL_GPTMysite_DEPARTMENTS + id;
     this.logger.log('[DEPTS-SERV] - UPDATE DEFAULT DEPARTMENT OFFLINE MSG - URL ', url);
 
     const body = { 'offline_msg': offlineMsg };
@@ -379,18 +379,18 @@ export class DepartmentService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
-    let url = this.URL_TILEDESK_DEPARTMENTS;
+    let url = this.URL_GPTMysite_DEPARTMENTS;
     // + '?nobot=' + true
     url += id + '/operators';
     this.logger.log('-- -- -- URL FOR TEST CHAT21 FUNC ', url);
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.tiledeskToken);
+    headers.append('Authorization', this.GPTMysiteToken);
     // this.logger.log('TOKEN TO COPY ', this.TOKEN)
     return this.httpClient
       .get<Department[]>(url, httpOptions)

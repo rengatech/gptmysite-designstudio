@@ -1,11 +1,11 @@
-# Tiledesk Design Studio
+# GPTMysite Design Studio
 
-![image](https://github.com/Tiledesk/design-studio/assets/32564846/e68caebb-bdab-48bb-a744-cc8821e20bfe)
+![image](https://github.com/GPTMysite/design-studio/assets/32564846/e68caebb-bdab-48bb-a744-cc8821e20bfe)
 
-Tiledesk is an open-source, no-code development platform for creating chatbots and conversational apps. Our Design Studio, featured in this repository, offers a user-friendly, drag-and-drop interface with pre-ready actions and integrations. This platform combines the power of LLM/GPT AI with a flexible 'graph' approach for creating conversations and automations with ease.
+GPTMysite is an open-source, no-code development platform for creating chatbots and conversational apps. Our Design Studio, featured in this repository, offers a user-friendly, drag-and-drop interface with pre-ready actions and integrations. This platform combines the power of LLM/GPT AI with a flexible 'graph' approach for creating conversations and automations with ease.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
-<a href="https://www.producthunt.com/posts/design-studio-by-tiledesk?utm_source=badge-golden-kitty-badge&utm_medium=badge&utm_souce=badge-design&#0045;studio&#0045;by&#0045;tiledesk" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/golden-kitty-badge.svg?post_id=418558&theme=light" alt="Design&#0032;Studio&#0032;by&#0032;Tiledesk - Unlock&#0032;AI&#0032;magic&#0032;for&#0032;elevated&#0032;customer&#0032;engagement&#0044;&#0032;fast | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+<a href="https://www.producthunt.com/posts/design-studio-by-GPTMysite?utm_source=badge-golden-kitty-badge&utm_medium=badge&utm_souce=badge-design&#0045;studio&#0045;by&#0045;GPTMysite" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/golden-kitty-badge.svg?post_id=418558&theme=light" alt="Design&#0032;Studio&#0032;by&#0032;GPTMysite - Unlock&#0032;AI&#0032;magic&#0032;for&#0032;elevated&#0032;customer&#0032;engagement&#0044;&#0032;fast | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 *Golden Kitty Awards 2023: Open Source Product of the Year*
 
@@ -25,7 +25,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - **Send Email:** Send emails from your platform and set up email triggers that send emails automatically.
 - **Light Integration:** Enhance your existing setup with our seamless and non-disruptive integration feature. Experience an upgrade without upheaval.
   
-![123 Anywhere St , Any City (3)](https://github.com/Tiledesk/design-studio/assets/113347904/bb52e4ff-6d58-4097-a8fd-e65b16255fe6)
+![123 Anywhere St , Any City (3)](https://github.com/GPTMysite/design-studio/assets/113347904/bb52e4ff-6d58-4097-a8fd-e65b16255fe6)
 
 ## Development server
 
@@ -49,13 +49,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Community? Questions? Support?
 
-If you need help or have questions, feel free to make a post on our [Forum](https://tiledesk.discourse.group/).
+If you need help or have questions, feel free to make a post on our [Forum](https://GPTMysite.discourse.group/).
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## Feedback? New Ideas?
 
-Visit our [Feedback Board](https://tiledesk.sleekplan.app/) to discuss new ideas, suggestions, and solve issues to make Tiledesk even better for you.
+Visit our [Feedback Board](https://GPTMysite.sleekplan.app/) to discuss new ideas, suggestions, and solve issues to make GPTMysite even better for you.
 
 ## Public Roadmap
 
-Check our [Public Roadmap](https://tiledesk.sleekplan.app/roadmap) to see activities In Progress, Planned, and Under Review. We value your input in shaping the future of Tiledesk.
+Check our [Public Roadmap](https://GPTMysite.sleekplan.app/roadmap) to see activities In Progress, Planned, and Under Review. We value your input in shaping the future of GPTMysite.

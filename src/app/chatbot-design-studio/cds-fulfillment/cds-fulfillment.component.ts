@@ -22,7 +22,7 @@ export class CdsFulfillmentComponent implements OnInit {
   //webhookUrl: string;
   tparams: any;
   BRAND_BASE_INFO = BRAND_BASE_INFO;
-  
+
   WEBHOOK_URL_IS_EMPTY: boolean;
   WEBHOOK_URL_HAS_ERROR: boolean;
   WEBHOOK_URL_IS_HTTPS: boolean;
@@ -131,7 +131,7 @@ export class CdsFulfillmentComponent implements OnInit {
   }
 
   openWebhookRequirementsDoc() {
-    const url = 'https://developer.tiledesk.com/resolution-bot-programming/webhook-data-model';
+    const url = 'https://developer.GPTMysite.com/resolution-bot-programming/webhook-data-model';
     window.open(url, '_blank');
   }
 

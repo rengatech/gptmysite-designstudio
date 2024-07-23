@@ -194,7 +194,7 @@ export class ActionWebRequestV2 extends Action {
     constructor(){
         super();
         this.url = '';
-        this.headersString = {"Content-Type":"*/*", "Cache-Control":"no-cache", "User-Agent":"TiledeskBotRuntime", "Accept":"*/*"};
+        this.headersString = {"Content-Type":"*/*", "Cache-Control":"no-cache", "User-Agent":"GPTMysiteBotRuntime", "Accept":"*/*"};
         this.settings = { timeout: 20000 }
         this.jsonBody = null
         this.bodyType = 'none'

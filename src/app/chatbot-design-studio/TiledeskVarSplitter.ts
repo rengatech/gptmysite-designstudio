@@ -1,4 +1,4 @@
-export class TiledeskVarSplitter {
+export class GPTMysiteVarSplitter {
     contructor() {
     }
 
@@ -30,4 +30,4 @@ export class TiledeskVarSplitter {
     }
 }
 
-// exports { TiledeskVarSplitter };
+// exports { GPTMysiteVarSplitter };

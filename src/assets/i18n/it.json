@@ -121,9 +121,9 @@
       "GoToBlock": "Vai al blocco"
     },
     "CDSModalPublishOnCommunity": {
-      "PublishYouChatbotToCommunity": "Pubblica il tuo chatbot sulla community di Tiledesk",
+      "PublishYouChatbotToCommunity": "Pubblica il tuo chatbot sulla community di GPTMysite",
       "Publishing": "Editoria",
-      "PublishChatbotCommunityDescription": "Pubblica il tuo chatbot sulla community di Tiledesk. ",
+      "PublishChatbotCommunityDescription": "Pubblica il tuo chatbot sulla community di GPTMysite. ",
       "BeHeardBeKnow": "Fatti ascoltare, fatti conoscere: completa il modulo disponibile nelle Informazioni personali prima di pubblicare!",
       "DeployToCommunity": "Distribuisci alla comunità"
     },
@@ -231,7 +231,7 @@
       "ErrorMessage": "Messaggio di errore",
       "DeleteField": "Elimina campo",
       "AreYouSureDeleteField": "Sei sicuro di voler eliminare il campo?",
-      "MarkbotLabel": "Puoi usare <a href='https://gethelp.tiledesk.com/articles/sending-images-videos-quick-replies-and-more/' target='_blank'>Markbot</a> per formattare le etichette.",
+      "MarkbotLabel": "Puoi usare <a href='https://gethelp.GPTMysite.com/articles/sending-images-videos-quick-replies-and-more/' target='_blank'>Markbot</a> per formattare le etichette.",
       "InfoMessages": {
         "field_name": "Dai un nome al campo Modulo (es: nome_Utente). ",
         "field_type": "Selezionare la tipologia di dati che verrà inserita in questo campo (es: Testo).",

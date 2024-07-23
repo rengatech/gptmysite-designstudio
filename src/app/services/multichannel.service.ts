@@ -15,7 +15,7 @@ export class MultichannelService {
   
 
   // private
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
 
   user: UserModel;
   // project: any;
@@ -30,7 +30,7 @@ export class MultichannelService {
 
   initialize(serverBaseUrl: string){
     this.SERVER_BASE_URL = serverBaseUrl,
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
   }
 
   getCodeForWhatsappTest(info) {

@@ -15,7 +15,7 @@ export class FaqKbService {
   SERVER_BASE_PATH: string;
   FAQKB_URL: any;
 
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
   private project_id: string;
 
 
@@ -34,7 +34,7 @@ export class FaqKbService {
   initialize(serverBaseUrl: string, projectId: string){
     this.logger.log('[FAQ-KB.SERV] initialize', serverBaseUrl);
     this.SERVER_BASE_PATH = serverBaseUrl;
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken');
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken');
     this.project_id = projectId;
     this.FAQKB_URL = this.SERVER_BASE_PATH + this.project_id + '/faq_kb/'
   }
@@ -48,7 +48,7 @@ export class FaqKbService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -80,7 +80,7 @@ export class FaqKbService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -113,7 +113,7 @@ export class FaqKbService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -132,7 +132,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -162,7 +162,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -182,7 +182,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
@@ -198,7 +198,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
@@ -214,7 +214,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
@@ -231,7 +231,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.SERVER_BASE_PATH + this.project_id + '/bots/' + idBot + '/attributes';
@@ -249,7 +249,7 @@ export class FaqKbService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -265,7 +265,7 @@ export class FaqKbService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.SERVER_BASE_PATH + this.project_id + '/faq_kb/' + id + '/attributes';

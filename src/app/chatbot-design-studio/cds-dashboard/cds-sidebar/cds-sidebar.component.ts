@@ -11,7 +11,7 @@ import { INFO_MENU_ITEMS } from '../../utils-menu';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
 import { ProjectService } from 'src/app/services/projects.service';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { UserModel } from 'src/chat21-core/models/user';
 import { ProjectUser } from 'src/app/models/project-user';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,13 +32,13 @@ export class CdsSidebarComponent implements OnInit {
   USER_ROLE: any;
   IS_OPEN: boolean = true;
   INFO_MENU_ITEMS = INFO_MENU_ITEMS;
-  
+
   private unsubscribe$: Subject<any> = new Subject<any>();
-  
+
   private logger: LoggerService = LoggerInstance.getInstance();
-  
+
   constructor(
-    private tiledeskAuthService: TiledeskAuthService,
+    private GPTMysiteAuthService: GPTMysiteAuthService,
     private projectService: ProjectService,
     private el: ElementRef,
     private dashboardService: DashboardService,
@@ -48,7 +48,7 @@ export class CdsSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectID = this.dashboardService.projectID;
-    this.user = this.tiledeskAuthService.getCurrentUser()
+    this.user = this.GPTMysiteAuthService.getCurrentUser()
     this.getUserRole();
   }
 

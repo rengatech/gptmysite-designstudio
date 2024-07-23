@@ -17,8 +17,8 @@ export class KnowledgeBaseService {
   public SERVER_BASE_URL: string;
 
   // private
-  private URL_TILEDESK_KNB: string;
-  private tiledeskToken: string;
+  private URL_GPTMysite_KNB: string;
+  private GPTMysiteToken: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
 
@@ -32,19 +32,19 @@ export class KnowledgeBaseService {
     this.logger.log('[KNOWLEDGE BASE SERVICE] - initialize serverBaseUrl', serverBaseUrl);
     this.project_id = project_id;
     this.SERVER_BASE_URL = serverBaseUrl;
-    this.URL_TILEDESK_KNB = this.SERVER_BASE_URL + this.project_id
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken')
+    this.URL_GPTMysite_KNB = this.SERVER_BASE_URL + this.project_id
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken')
   }
 
   getKbSettings() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_KNB + "/kbsettings";
+    const url = this.URL_GPTMysite_KNB + "/kbsettings";
     this.logger.info("[KNOWLEDGE BASE SERVICE] - get settings URL ", url);
 
     return this.httpClient.get(url, httpOptions);
@@ -54,11 +54,11 @@ export class KnowledgeBaseService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_KNB + "/kbsettings/" + kb_settings._id;
+    const url = this.URL_GPTMysite_KNB + "/kbsettings/" + kb_settings._id;
     this.logger.info("[KNOWLEDGE BASE SERVICE] - save settings URL ", url);
 
     return this.httpClient.put(url, kb_settings, httpOptions);
@@ -68,11 +68,11 @@ export class KnowledgeBaseService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_KNB + "/kbsettings/" + settings_id;
+    const url = this.URL_GPTMysite_KNB + "/kbsettings/" + settings_id;
     this.logger.info("[KNOWLEDGE BASE SERVICE] - add new kb URL ", url);
 
     return this.httpClient.post(url, kb, httpOptions);
@@ -82,11 +82,11 @@ export class KnowledgeBaseService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     }
 
-    const url = this.URL_TILEDESK_KNB + "/kbsettings/" + settings_id + "/" + kb_id;
+    const url = this.URL_GPTMysite_KNB + "/kbsettings/" + settings_id + "/" + kb_id;
     this.logger.info("[KNOWLEDGE BASE SERVICE] - delete kb URL ", url);
 
     return this.httpClient.delete(url, httpOptions);

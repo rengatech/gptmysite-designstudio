@@ -47,7 +47,7 @@ export class CdsCanvasComponent implements OnInit {
   hasClickedAddAction: boolean = false;
   hideActionPlaceholderOfActionPanel: boolean;
 
-  /** panel list of intent */ 
+  /** panel list of intent */
   IS_OPEN_INTENTS_LIST: boolean = true;
 
   /** panel add action menu */
@@ -60,12 +60,12 @@ export class CdsCanvasComponent implements OnInit {
   private subscriptionOpenDetailPanel: Subscription;
   IS_OPEN_PANEL_ACTION_DETAIL: boolean = false;
   elementIntentSelected: any;
-  
+
   /** panel reply button configuaration */
   private subscriptionOpenButtonPanel: Subscription;
   IS_OPEN_PANEL_BUTTON_CONFIG: boolean = false;
   buttonSelected: any;
-  
+
 
   /** panel widget */
   private subscriptionOpenWidgetPanel: Subscription;
@@ -140,7 +140,7 @@ export class CdsCanvasComponent implements OnInit {
   }
 
   // private async setStartIntent(){
- 
+
   //   this.intentSelected = this.listOfIntents.find((intent) => intent.intent_display_name === 'start');
   //   this.logger.log('[CDS-CANVAS]  intentSelected: ', this.intentSelected);
   //   if(this.intentSelected){
@@ -156,15 +156,15 @@ export class CdsCanvasComponent implements OnInit {
   //   }
   // }
 
-  
+
   /** ************************* **/
-  /** START CUSTOM FUNCTIONS 
+  /** START CUSTOM FUNCTIONS
   /** ************************* **/
 
   // --------------------------------------------------------- //
   /** SUBSCRIBE TO THE INTENT LIST */
   // --------------------------------------------------------- //
-  
+
   private setSubscriptions(){
 
     this.subscriptionUndoRedo = this.intentService.behaviorUndoRedo.subscribe((undoRedo: any) => {
@@ -184,7 +184,7 @@ export class CdsCanvasComponent implements OnInit {
       // if(intents.length > 0 || (intents.length == 0 && this.listOfIntents.length>0)){
       //   this.listOfIntents = this.intentService.hiddenEmptyIntents(intents);
       // }
-      
+
     });
 
     /** SUBSCRIBE TO THE STATE ACTION DETAIL PANEL */
@@ -227,7 +227,7 @@ export class CdsCanvasComponent implements OnInit {
       } else {
         this.IS_OPEN_ADD_ACTIONS_MENU = false;
       }
-    });    
+    });
 
   }
 
@@ -254,7 +254,7 @@ export class CdsCanvasComponent implements OnInit {
     }
   }
 
- 
+
 
   /** closeAllPanels */
   private closeAllPanels(){
@@ -285,7 +285,7 @@ export class CdsCanvasComponent implements OnInit {
   }
 
   /** SET DRAG STAGE AND CREATE CONNECTORS *
-  * set drag and listner on intents, 
+  * set drag and listner on intents,
   * create connectors
   */
   private refreshIntents() {
@@ -298,19 +298,19 @@ export class CdsCanvasComponent implements OnInit {
   // ---------------------------------------------------------
   addEventListener() {
     let that = this;
-    /** LISTENER OF TILEDESK STAGE */
+    /** LISTENER OF GPTMysite STAGE */
 
-    /** moved-and-scaled ** 
+    /** moved-and-scaled **
      * scatta quando sposto lo stage (lo muovo o lo scalo):
      * - imposto la scala
-     * - chiudo 
+     * - chiudo
      * - elimino il connettore disegnato e chiudo il float menu se è aperto
     */
     document.addEventListener(
       "moved-and-scaled", (e: CustomEvent) => {
         const el = e.detail;
         // this.logger.log('[CDS-CANVAS] moved-and-scaled ', el)
-        this.connectorService.tiledeskConnectors.scale = e.detail.scale;
+        this.connectorService.GPTMysiteConnectors.scale = e.detail.scale;
         this.removeConnectorDraftAndCloseFloatMenu();
       },
       false
@@ -359,10 +359,10 @@ export class CdsCanvasComponent implements OnInit {
       false
     );
 
-    
-    /** LISTNER OF TILEDESK CONNECTORS */
-     
-    /** connector-draft-released ** 
+
+    /** LISTNER OF GPTMysite CONNECTORS */
+
+    /** connector-draft-released **
      * scatta solo quando NON viene creato un connettore, cioè quando rilascio il connettore tratteggiato in un punto che non è "collegabile"
      * se lo rilascio sullo stage ed 'e.detail' è completo della posizione di partenza e di arrivo del connettore posso aprire il float menu
      * altrimenti
@@ -401,7 +401,7 @@ export class CdsCanvasComponent implements OnInit {
       },
       true
     );
- 
+
     /** connector-deleted **
      * scatta quando viene eliminato un connettore:
      *  - elimino il connettore dalla lista dei connettori (deleteConnectorToList)
@@ -462,10 +462,10 @@ export class CdsCanvasComponent implements OnInit {
       },
       true
     );
-    
-    
-    
-  
+
+
+
+
     document.addEventListener(
       "keydown", (e) => {
         // Verifica se è stato premuto Ctrl (Windows) o Command (Mac) e Z contemporaneamente
@@ -475,20 +475,20 @@ export class CdsCanvasComponent implements OnInit {
           return;
         }
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'z') {
-          e.preventDefault(); 
+          e.preventDefault();
           // Evita il comportamento predefinito, ad esempio la navigazione indietro nella cronologia del browser
           this.logger.log("Hai premuto Ctrl+ALT+Z (o Command+Alt+Z)!");
           this.intentService.restoreLastREDO();
         } else if ((e.ctrlKey || e.metaKey) && e.key === "z") {
           // Impedisci il comportamento predefinito (ad esempio, l'undo in un campo di testo)
-          e.preventDefault(); 
+          e.preventDefault();
           this.logger.log("Hai premuto Ctrl+Z (o Command+Z)!");
           this.intentService.restoreLastUNDO();
         }
       }, false
     );
 
-    
+
 
   }
   // ---------------------------------------------------------
@@ -497,9 +497,9 @@ export class CdsCanvasComponent implements OnInit {
 
 
   // -------------------------------------------------------
-  // @ Close WHEN THE STAGE IS CLICKED 
+  // @ Close WHEN THE STAGE IS CLICKED
   // - actions context menu' (static & float),
-  // - detail action panel, 
+  // - detail action panel,
   // - button configuration panel
   // - test widget
   // -------------------------------------------------------
@@ -517,10 +517,10 @@ export class CdsCanvasComponent implements OnInit {
 
   /** -------------------------------------------------------
    * LISTNER WHEN ARE CLICKED THE KEYBOARD KEYS Backspace, Escape or Canc
-   * actions context menu (static & float) 
+   * actions context menu (static & float)
    * -------------------------------------------------------
   */
-  @HostListener('document:keydown', ['$event']) 
+  @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
     // event.key === 'Backspace' ||
     if (event.key === 'Escape' || event.key === 'Canc' && !this.hasClickedAddAction) {
@@ -531,7 +531,7 @@ export class CdsCanvasComponent implements OnInit {
       else{
         // case: STATIC MENU
         this.IS_OPEN_ADD_ACTIONS_MENU = false;
-      } 
+      }
     }
   }
 
@@ -545,17 +545,17 @@ export class CdsCanvasComponent implements OnInit {
   }
 
   /** -------------------------------------------------------
-   * LISTNER OF FLOAT MENU 
+   * LISTNER OF FLOAT MENU
    * -------------------------------------------------------
   */
-  @HostListener('document:mouseup', ['$event']) 
+  @HostListener('document:mouseup', ['$event'])
   onMouseUpHandler(event: KeyboardEvent) {
     // this.logger.log('[CDS-CANVAS] MOUSE UP CLOSE FLOAT MENU', this.hasClickedAddAction);
   }
 
 
   // ------------------------------------------
-  // @ START DRAG DROP FUNCTIONS 
+  // @ START DRAG DROP FUNCTIONS
   // ------------------------------------------
   /** openFloatMenuOnConnectorDraftReleased */
   private openFloatMenuOnConnectorDraftReleased(detail){
@@ -592,7 +592,7 @@ export class CdsCanvasComponent implements OnInit {
   //       // this.intentService.setListnerEvent(intent);
   //       clearInterval(intervalId);
   //     }
-  //   }, 100); 
+  //   }, 100);
   //   // Chiamiamo la funzione ogni 100 millisecondi (0.1 secondo)
   //   // Termina l'intervallo dopo 2 secondi (2000 millisecondi)
   //   setTimeout(() => {
@@ -601,11 +601,11 @@ export class CdsCanvasComponent implements OnInit {
   //   }, 2000);
   // }
   /** ************************* **/
-  /** END DRAG DROP FUNCTIONS 
+  /** END DRAG DROP FUNCTIONS
   /** ************************* **/
- 
- 
- 
+
+
+
   /** removeConnectorDraftAndCloseFloatMenu */
   private removeConnectorDraftAndCloseFloatMenu() {
     this.connectorService.removeConnectorDraft();
@@ -619,7 +619,7 @@ export class CdsCanvasComponent implements OnInit {
     this.stageService.centerStageOnPosition(stageElement);
   }
 
-  /**  updateIntent 
+  /**  updateIntent
    * chiamata da cds-panel-action-detail e da cds-panel-button-configuration
    * quando modifico un intent da pannello ex: cambio il testo, aggiungo un bottone ecc.
   */
@@ -636,13 +636,13 @@ export class CdsCanvasComponent implements OnInit {
 
   /** Delete Intent **
    * deleteIntentToListOfIntents: per cancellare l'intent dalla lista degli intents (listOfIntents), quindi in automatico per rimuovere l'intent dallo stage
-   * refreshIntents: fa scattare l'evento e aggiorna l'elenco degli intents (listOfIntents) in tutti i componenti sottoscritti, come cds-panel-intent-list 
+   * refreshIntents: fa scattare l'evento e aggiorna l'elenco degli intents (listOfIntents) in tutti i componenti sottoscritti, come cds-panel-intent-list
    * deleteIntent: chiamo il servizio per eliminare l'intent da remoto (il servizio è asincrono e non restituisce nulla, quindi ingnoro l'esito)
    * in deleteIntent: aggiungo l'azione ad UNDO/REDO
    * deleteConnectorsOfBlock: elimino i connettori in Ingresso verso intent eliminato e in Uscita dallo stesso, e salvo in automatico gli intent modificati (quelli ai quali ho eliminato il connettore in uscita)
-   * 
+   *
    * ATTENZIONE: è necessario mantenere l'ordine per permettere ad UNDO/REDO di salvare in maniera corretta
-   * 
+   *
    */
   private async deleteIntent(intent) {
     this.logger.log('[CDS-CANVAS]  deleteIntent', intent);
@@ -652,16 +652,16 @@ export class CdsCanvasComponent implements OnInit {
     // return
     // this.intentService.deleteIntentToListOfIntents(intent.intent_id);
     // this.intentService.refreshIntents();
-    
+
     // IMPORTANTE operazione SUCCESSIVA! al delete cancello tutti i connettori IN e OUT dell'intent eliminato e salvo la modifica
-    // this.connectorService.deleteConnectorsOfBlock(intent.intent_id, true, false); 
+    // this.connectorService.deleteConnectorsOfBlock(intent.intent_id, true, false);
   }
 
 
 
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   // START EVENTS
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
 
   /** onToogleSidebarIntentsList */
   onToogleSidebarIntentsList() {
@@ -673,19 +673,19 @@ export class CdsCanvasComponent implements OnInit {
 
   /** onDroppedElementToStage **
    * chiamata quando aggiungo (droppandola) una action sullo stage da panel element
-   * oppure 
-   * chiamata quando aggiungo (droppandola) una action sullo stage spostandola da un altro intent  
+   * oppure
+   * chiamata quando aggiungo (droppandola) una action sullo stage spostandola da un altro intent
    * */
   async onDroppedElementToStage(event: CdkDragDrop<string[]>) {
     this.logger.log('[CDS-CANVAS] droppedElementOnStage:: ', event);
-    let pos = this.connectorService.tiledeskConnectors.logicPoint(event.dropPoint);
+    let pos = this.connectorService.GPTMysiteConnectors.logicPoint(event.dropPoint);
     pos.x = pos.x - 132;
     let action: any = event.previousContainer.data[event.previousIndex];
     if (action.value && action.value.type) {
       this.logger.log('[CDS-CANVAS] ho draggato una action da panel element sullo stage');
       this.closeAllPanels();
       this.closeActionDetailPanel();
-      // this.removeConnectorDraftAndCloseFloatMenu();  
+      // this.removeConnectorDraftAndCloseFloatMenu();
       this.createNewIntentFromPanelElement(pos, action.value.type);
     } else if (action) {
       this.logger.log('[CDS-CANVAS] ho draggato una action da un intent sullo stage');
@@ -703,18 +703,18 @@ export class CdsCanvasComponent implements OnInit {
 
   /**
    * createNewIntentFromConnectorDraft
-   * @param typeAction 
-   * @param connectorDraft 
-   * chiamata quando trascino un connettore sullo stage e creo un intent al volo  
+   * @param typeAction
+   * @param connectorDraft
+   * chiamata quando trascino un connettore sullo stage e creo un intent al volo
    * createNewAction: creo una action a partire dal tipo di action selezionata
    * createNewIntent: creo un intent dalla action creata in precedenza
-   * addNewIntentToListOfIntents: aggiungo il nuovo intent alla lista degli intent 
+   * addNewIntentToListOfIntents: aggiungo il nuovo intent alla lista degli intent
    * removeConnectorDraftAndCloseFloatMenu: rimuovo il connettore tratteggiato dallo stage e chiudo il menu
    * createConnectorFromId: crea il nuovo connettore passando fromId e toId
    * attendi che il connettore sia creato e quindi procedi al salvataggio, calcolando l'intent nello stato precedente e quello nello stato attuale
    * settingAndSaveNewIntent: chiamo la funzione per salvare in maniera asincrona l'intent creato
    * aggiorno la stato dell'intent di partenza
-   * 
+   *
    */
   async createNewIntentFromConnectorDraft(typeAction, connectorDraft){
     const toPoint = connectorDraft.toPoint;
@@ -727,7 +727,7 @@ export class CdsCanvasComponent implements OnInit {
     this.logger.log('[CDS-CANVAS] sto per creare il connettore ', connectorDraft, fromId, toId);
     const resp = await this.connectorService.createConnectorFromId(fromId, toId, true, null); //Sync
     if(resp){
-      // aggiorno action di partenza 
+      // aggiorno action di partenza
       let splitFromId = fromId.split('/');
       let intent_id = splitFromId[0];
       let prevIntent = this.intentService.prevListOfIntent.find((obj) => obj.intent_id === intent_id);
@@ -744,9 +744,9 @@ export class CdsCanvasComponent implements OnInit {
 
   /**
    * createNewIntentFromPanelElement
-   * @param pos 
-   * @param typeAction 
-   * chiamata quando trascino un'azione sullo stage dal menu  
+   * @param pos
+   * @param typeAction
+   * chiamata quando trascino un'azione sullo stage dal menu
    * createNewAction: creo una action a partire dal tipo di action selezionata
    * createNewIntent: creo un intent dalla action creata in precedenza
    * addNewIntentToListOfIntents: aggiungo il nuovo intent alla lista degli intent
@@ -763,8 +763,8 @@ export class CdsCanvasComponent implements OnInit {
 
   /**
    * createNewIntentDraggingActionFromAnotherIntent
-   * @param pos 
-   * @param action 
+   * @param pos
+   * @param action
    */
   async createNewIntentDraggingActionFromAnotherIntent(pos, action){
     // let nowIntent = this.listOfIntents.find((intent) => intent.actions.some((act) => act._tdActionId === action._tdActionId));
@@ -789,7 +789,7 @@ export class CdsCanvasComponent implements OnInit {
 
 
   /** createNewIntentWithNewAction
-  * chiamata quando trascino un connettore sullo stage e creo un intent al volo 
+  * chiamata quando trascino un connettore sullo stage e creo un intent al volo
   * oppure
   * chiamata quando aggiungo (droppandola) una action sullo stage da panel element
   * oppure
@@ -807,11 +807,11 @@ export class CdsCanvasComponent implements OnInit {
 
 
   // --------------------------------------------------------- //
- 
 
-  // --------------------------------------------------------- // 
+
+  // --------------------------------------------------------- //
   // START EVENT > PANEL ELEMENTS
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   /** Close WHEN THE ACTION LEFT MENU IS CLICKED **
    * - actions context menu (static & float)
    * - test widget
@@ -833,13 +833,13 @@ export class CdsCanvasComponent implements OnInit {
     this.logger.log('[CDS-CANVAS] onHideActionPlaceholderOfActionPanel event : ', event);
     // this.hideActionPlaceholderOfActionPanel = event
   }
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
 
 
 
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   // START EVENT > PANEL INTENT LIST
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   /** onSelectIntent */
   onSelectIntent(intent: Intent) {
     // this.logger.log('[CDS-CANVAS] onSelectIntent::: ', intent);
@@ -876,15 +876,15 @@ export class CdsCanvasComponent implements OnInit {
     // })
   }
   // --------------------------------------------------------- //
- 
 
-  // --------------------------------------------------------- // 
+
+  // --------------------------------------------------------- //
   // START EVENT > INTENT
   // --------------------------------------------------------- //
   /** onActionSelected  **
    * @ Close WHEN AN ACTION IS SELECTED FROM AN INTENT
    * - actions context menu (static & float)
-   * - button configuration panel  
+   * - button configuration panel
    * - test widget
   */
   onActionSelected(event) {
@@ -901,7 +901,7 @@ export class CdsCanvasComponent implements OnInit {
   /** onQuestionSelected  **
    * @ Close WHEN THE QUESTION DETAIL PANEL IS OPENED
    * - actions context menu (static & float)
-   * - button configuration panel 
+   * - button configuration panel
    * - test widget
   */
   onQuestionSelected(question: string) {
@@ -918,7 +918,7 @@ export class CdsCanvasComponent implements OnInit {
   /** onIntentFormSelected  **
    * @ Close WHEN THE FORM DETAIL PANEL IS OPENED
    * - actions context menu (static & float)
-   * - button configuration panel 
+   * - button configuration panel
    * - test widget
   */
   onIntentFormSelected(intentform: Form) {
@@ -937,7 +937,7 @@ export class CdsCanvasComponent implements OnInit {
   // @ Close
   // - test widget
   // - detail action panel
-  // - button configuration panel 
+  // - button configuration panel
   // -------------------------------------------------------
   onShowPanelActions(event) {
     this.logger.log('[CDS-CANVAS] showPanelActions event:: ', event);
@@ -961,7 +961,7 @@ export class CdsCanvasComponent implements OnInit {
   // @ Close
   // - detail action panel
   // - actions context menu' (static & float),
-  // - button configuration panel  
+  // - button configuration panel
   // -------------------------------------------------------
   onTestItOut(intent: Intent) {
     // this.testItOut.emit(true);
@@ -998,29 +998,29 @@ export class CdsCanvasComponent implements OnInit {
   // --------------------------------------------------------- //
 
 
-   // --------------------------------------------------------- // 
-  // EVENT > PANEL OPTIONS 
+   // --------------------------------------------------------- //
+  // EVENT > PANEL OPTIONS
   // --------------------------------------------------------- //
   async onOptionClicked(option: OPTIONS){
     switch(option){
       case OPTIONS.ZOOM_IN: {
         const result = await  this.stageService.zoom('in');
         if (result) {
-          this.connectorService.tiledeskConnectors.scale = this.stageService.getScale();
+          this.connectorService.GPTMysiteConnectors.scale = this.stageService.getScale();
         }
         break;
       }
       case OPTIONS.ZOOM_OUT: {
         const result = await this.stageService.zoom('out');
         if (result) {
-          this.connectorService.tiledeskConnectors.scale = this.stageService.getScale();
+          this.connectorService.GPTMysiteConnectors.scale = this.stageService.getScale();
         }
         break;
       }
       case OPTIONS.CENTER: {
         const result = await this.stageService.scaleAndCenter(this.listOfIntents);
         if (result) {
-          this.connectorService.tiledeskConnectors.scale = this.stageService.getScale();
+          this.connectorService.GPTMysiteConnectors.scale = this.stageService.getScale();
         }
         break;
       }
@@ -1033,11 +1033,11 @@ export class CdsCanvasComponent implements OnInit {
         break;
       }
     }
-  } 
+  }
 
 
-  // --------------------------------------------------------- // 
-  // EVENT > PANEL BUTTON CONFIGURATION 
+  // --------------------------------------------------------- //
+  // EVENT > PANEL BUTTON CONFIGURATION
   // --------------------------------------------------------- //
   /** onSaveButton */
   onSaveButton(button: Button) {
@@ -1058,7 +1058,7 @@ export class CdsCanvasComponent implements OnInit {
   // --------------------------------------------------------- //
 
 
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   // EVENT > PANEL ACTION DETAIL
   // --------------------------------------------------------- //
   /** onSavePanelIntentDetail */
@@ -1072,19 +1072,19 @@ export class CdsCanvasComponent implements OnInit {
     } else {
       // this.onOpenDialog();
     }
-    
+
   }
   // --------------------------------------------------------- //
 
 
-  // --------------------------------------------------------- // 
+  // --------------------------------------------------------- //
   // EVENT > ADD ACTION MENU
   // --------------------------------------------------------- //
   /** START EVENTS PANEL INTENT */
   /** chiamata quando trascino un connettore sullo stage e creo un intent al volo */
   /** OPPURE */
   /** chiamata quando premo + sull'intent per aggiungere una nuova action */
-  
+
   async onAddActionFromActionMenu(event) {
     this.logger.log('[CDS-CANVAS] onAddActionFromActionMenu:: ', event);
     this.IS_OPEN_ADD_ACTIONS_MENU = true;
@@ -1094,7 +1094,7 @@ export class CdsCanvasComponent implements OnInit {
       this.logger.log("[CDS-CANVAS] ho trascinato il connettore e sto per creare un intent");
       this.createNewIntentFromConnectorDraft(event.type, connectorDraft);
       // this.removeConnectorDraftAndCloseFloatMenu();
-    } 
+    }
     else if (this.hasClickedAddAction) {
       this.logger.log("[CDS-CANVAS] ho premuto + quindi creo una nuova action e la aggiungo all'intent");
       const newAction = this.intentService.createNewAction(event.type);
@@ -1104,14 +1104,14 @@ export class CdsCanvasComponent implements OnInit {
       // this.updateIntent(this.intentSelected, 0, true);
       this.controllerService.closeAddActionMenu();
     }
-    
+
   }
   // --------------------------------------------------------- //
 
 
   /**
    * setConnectorSelected
-   * @param idConnector 
+   * @param idConnector
    */
   setConnectorSelected(idConnector){
     this.connectorSelected = {};
@@ -1132,7 +1132,7 @@ export class CdsCanvasComponent implements OnInit {
 
   /**
    * onAddActionFromConnectorMenu
-   * @param event 
+   * @param event
    */
   async onAddActionFromConnectorMenu(event) {
     if(event.type === "delete"){
@@ -1152,7 +1152,7 @@ export class CdsCanvasComponent implements OnInit {
         let intent = this.intentService.getIntentFromId(intentId);
         if(!intent.attributes.connectors){
           intent.attributes['connectors'] = {};
-        } 
+        }
         if(!intent.attributes.connectors[this.connectorSelected.id]){
           intent.attributes.connectors[this.connectorSelected.id] = {};
         }
@@ -1163,7 +1163,7 @@ export class CdsCanvasComponent implements OnInit {
       }
       this.IS_OPEN_PANEL_CONNECTOR_MENU = false;
     }
-    
+
   }
   // --------------------------------------------------------- //
 

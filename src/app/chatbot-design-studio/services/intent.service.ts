@@ -12,7 +12,7 @@ import { ConnectorService } from '../services/connector.service';
 import { ControllerService } from '../services/controller.service';
 import { StageService } from '../services/stage.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { environment } from 'src/environments/environment';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
 import { ExpressionType } from '@angular/compiler';
@@ -79,7 +79,7 @@ export class IntentService {
     private controllerService: ControllerService,
     private stageService: StageService,
     private dashboardService: DashboardService,
-    private tiledeskAuthService: TiledeskAuthService
+    private GPTMysiteAuthService: GPTMysiteAuthService
   ) { 
 
   }
@@ -1439,7 +1439,7 @@ export class IntentService {
       let chatbot = this.dashboardService.selectedChatbot;
       let id_project = this.dashboardService.projectID;
       const that = this
-      let user = this.tiledeskAuthService.getCurrentUser();
+      let user = this.GPTMysiteAuthService.getCurrentUser();
   
       if(window['analytics']){
         try {

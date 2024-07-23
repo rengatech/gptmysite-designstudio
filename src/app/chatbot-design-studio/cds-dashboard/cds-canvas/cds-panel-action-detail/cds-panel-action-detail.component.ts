@@ -11,7 +11,7 @@ import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance'
 import { ProjectPlanUtils } from 'src/app/utils/project-utils';
 import { PLAN_NAME } from 'src/chat21-core/utils/constants';
 import { AppConfigService } from 'src/app/services/app-config';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { TYPE_ACTION, TYPE_ACTION_VXML, ACTIONS_LIST } from 'src/app/chatbot-design-studio/utils-actions';
 
 
@@ -33,7 +33,7 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
   typeIntentElement = TYPE_INTENT_ELEMENT;
   TYPE_ACTION = TYPE_ACTION;
   TYPE_ACTION_VXML = TYPE_ACTION_VXML
-  
+
   elementSelected: any;
   // elementSelectedIndex: number;
   // elementSelectedMaxLength: number[] = [];
@@ -44,17 +44,17 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
    /** panel reply button configuaration */
    private subscriptionIntent: Subscription;
 
-  
+
   canShowActionByPlan: { plan: PLAN_NAME, enabled: boolean}= { plan: PLAN_NAME.A, enabled: true}
   private logger: LoggerService = LoggerInstance.getInstance()
-  
+
   constructor(
     private intentService: IntentService,
     private connectorService: ConnectorService,
     private dashboardService: DashboardService,
     private projectPlanUtils: ProjectPlanUtils,
     private appConfigService: AppConfigService,
-    private tiledeskAuthService: TiledeskAuthService
+    private GPTMysiteAuthService: GPTMysiteAuthService
   ) { }
 
   ngOnInit(): void {
@@ -83,7 +83,7 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
       this.subscriptionIntent.unsubscribe();
     }
   }
-  
+
 
   initialize(){
     this.intentSelected = this.intentService.intentSelected;
@@ -96,7 +96,7 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
       // this.elementSelectedMaxLength = [...Array(this.elementIntentSelected.maxLength).keys()]
       this.logger.log('[PANEL-INTENT-DETAIL] (OnChanges) elementIntentSelectedType ', this.elementIntentSelectedType);
       this.logger.log('[PANEL-INTENT-DETAIL] (OnChanges) elementSelected ', this.elementSelected);
-      
+
       this.checkActionAvailabilty()
 
     }catch(error){
@@ -121,7 +121,7 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
   initSubscriptions() {
     /** SUBSCRIBE TO THE INTENT SELECTED */
     this.subscriptionIntent = this.intentService.behaviorIntent.subscribe((int: Intent) => {
-      
+
       let intent = this.intentService.listOfIntents.find((obj) => obj.intent_id === int.intent_id);
       this.logger.log('[PANEL-INTENT-DETAIL] --- initSubscriptions AGGIORNATO INTENT ',int.intent_id, this.elementSelected, intent);
 
@@ -215,8 +215,8 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
   }
 
   goToContactSales(){
-    let user = this.tiledeskAuthService.getCurrentUser();
-    window.open(`mailto:sales@tiledesk.com?subject=Upgrade to Tiledesk ${this.canShowActionByPlan.plan}`);
+    let user = this.GPTMysiteAuthService.getCurrentUser();
+    window.open(`mailto:sales@GPTMysite.com?subject=Upgrade to GPTMysite ${this.canShowActionByPlan.plan}`);
     try {
       window['analytics'].page('CDS Contact sales', {
         action: this.elementSelected
@@ -237,15 +237,15 @@ export class CdsActionDetailPanelComponent implements OnInit, OnChanges {
     } catch (err) {
       this.logger.error('track contact us to upgrade plan error', err);
     }
-    
+
   }
 
  /**
    * onConnectorChange
-   * @param type 
-   * @param idConnector 
-   * @param toIntentId 
-   * 
+   * @param type
+   * @param idConnector
+   * @param toIntentId
+   *
    * IMPORTANTE: questa funzione deve SOLO aggiornare i connettori e NON deve salvare e NON deve aggiungere UNDO.
    */
   onConnectorChange(type: 'create' | 'delete', idConnector: string, toIntentId: string){

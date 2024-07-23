@@ -13,7 +13,7 @@ export class FaqService {
   FAQ_URL: any;
   EXPORT_FAQ_TO_CSV_URL: string;
   
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
   private project_id: string;
 
   private logger: LoggerService = LoggerInstance.getInstance();
@@ -27,7 +27,7 @@ export class FaqService {
   initialize(serverBaseUrl: string, projectId: string){
     this.logger.log('[FAQ-KB.SERV] initialize', serverBaseUrl);
     this.SERVER_BASE_PATH = serverBaseUrl;
-    this.tiledeskToken = this.appStorageService.getItem('tiledeskToken');
+    this.GPTMysiteToken = this.appStorageService.getItem('GPTMysiteToken');
     this.project_id = projectId;
     this.FAQ_URL = this.SERVER_BASE_PATH + this.project_id + '/faq/';
     this.EXPORT_FAQ_TO_CSV_URL = this.SERVER_BASE_PATH + this.project_id + '/faq/csv';
@@ -37,7 +37,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.FAQ_URL + '?id_faq_kb=' + id_faq_kb;
@@ -54,7 +54,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken,
+        'Authorization': this.GPTMysiteToken,
       }),
       responseType: 'text' as 'json'
     };
@@ -69,7 +69,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken,
+        'Authorization': this.GPTMysiteToken,
       }),
       // responseType: 'text' as 'json'
     };
@@ -84,7 +84,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken,
+        'Authorization': this.GPTMysiteToken,
       }),
       // responseType: 'text' as 'json'
     };
@@ -100,7 +100,7 @@ export class FaqService {
     const options = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -115,7 +115,7 @@ export class FaqService {
     const options = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -130,7 +130,7 @@ export class FaqService {
     const options = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -156,7 +156,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     const url = this.FAQ_URL;
@@ -174,7 +174,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     this.logger.log('[FAQ-SERV] UPDATE FAQ - ID ', intent._id);
@@ -200,7 +200,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -230,7 +230,7 @@ export class FaqService {
     const options = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -249,7 +249,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.FAQ_URL + id;
@@ -273,7 +273,7 @@ export class FaqService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -299,7 +299,7 @@ export class FaqService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
 
@@ -315,7 +315,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.SERVER_BASE_PATH + this.project_id + '/faq/' + id + '/attributes';
@@ -329,7 +329,7 @@ export class FaqService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.tiledeskToken
+        'Authorization': this.GPTMysiteToken
       })
     };
     let url = this.SERVER_BASE_PATH + this.project_id + '/faq/ops_update'; 

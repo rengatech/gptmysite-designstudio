@@ -65,30 +65,30 @@ export class CdsSupportComponent implements OnInit {
 
   private manageWidget(status: "hide" | "show" | "open" | "close" | "start", projectInfo?: any) {
     try {
-      if (window && window['tiledesk']) {
-        this.logger.log('[CDS DSHBRD] HIDE WIDGET ', window['tiledesk'])
+      if (window && window['GPTMysite']) {
+        this.logger.log('[CDS DSHBRD] HIDE WIDGET ', window['GPTMysite'])
         if (status === 'hide') {
-          window['tiledesk'].hide();
+          window['GPTMysite'].hide();
         } else if (status === 'show') {
-          window['tiledesk'].show();
+          window['GPTMysite'].show();
         } else if(status === 'open'){
-          window['tiledesk'].open();
+          window['GPTMysite'].open();
         }else if(status === "close"){
-          window['tiledesk'].close();
+          window['GPTMysite'].close();
         }
        
       }
 
-      if (window && !window['tiledesk']) {
+      if (window && !window['GPTMysite']) {
         if(status === "start"){
           window['startWidget']();
-          window['tiledesk_widget_login']();
-          window['tiledesk'].setAttributeParameter({ key: 'payload', value: {project:  projectInfo}})
+          window['GPTMysite_widget_login']();
+          window['GPTMysite'].setAttributeParameter({ key: 'payload', value: {project:  projectInfo}})
         }
       }
       
     } catch (error) {
-      this.logger.error('tiledesk_widget_hide ERROR', error)
+      this.logger.error('GPTMysite_widget_hide ERROR', error)
     }
   }
 

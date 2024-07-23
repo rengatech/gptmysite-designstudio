@@ -469,7 +469,7 @@ export class MQTTConversationsHandler extends ConversationsHandlerService {
     //             // this.logger.log('****** then *****');
     //         })
     //         .catch(function() {
-    //             // this.logger.log('***//tiledesk-dashboard/chat*');
+    //             // this.logger.log('***//GPTMysite-dashboard/chat*');
     //         });
     //     }, 1000);       
     // }

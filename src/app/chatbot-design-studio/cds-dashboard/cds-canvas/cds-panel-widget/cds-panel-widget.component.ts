@@ -26,7 +26,7 @@ export class CdsPanelWidgetComponent implements OnInit, OnDestroy {
   // @Input() intentName: string;
 
   intentName: string;
-  
+
   projectID: string;
   selectedChatbot: Chatbot;
   defaultDepartmentId: string;
@@ -36,7 +36,7 @@ export class CdsPanelWidgetComponent implements OnInit, OnDestroy {
 
   WIDGET_BASE_URL: string = ''
   widgetTestSiteUrl: SafeResourceUrl = null
-  constructor( 
+  constructor(
     public appConfigService: AppConfigService,
     private sanitizer: DomSanitizer,
     private elementRef: ElementRef,
@@ -46,12 +46,12 @@ export class CdsPanelWidgetComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.initTiledesk();
+    // this.initGPTMysite();
     if(!this.intentService.intentSelected){
       this.intentService.setDefaultIntentSelected();
     }
     this.intentName = this.intentService.intentSelected.intent_display_name;
-    
+
     /** allow to start a new converation if intent change and user has select 'play' icon from intent heaader
      *  (skip only the first time --> setIframeUrl() make the first iteration calling widget url)
      *  - save and check if intent name has changed
@@ -74,17 +74,17 @@ export class CdsPanelWidgetComponent implements OnInit, OnDestroy {
   setIframeUrl(){
     this.WIDGET_BASE_URL = this.appConfigService.getConfig().widgetBaseUrl;
     const testItOutUrl = this.WIDGET_BASE_URL + "assets/twp" + '/chatbot-panel.html'
-    // const testItOutUrl = "https://widget.tiledesk.com/v6/5.0.71/assets/twp"+ '/chatbot-panel.html'
+    // const testItOutUrl = "https://widget.GPTMysite.com/v6/5.0.71/assets/twp"+ '/chatbot-panel.html'
     // const testItOutUrl = 'http://localhost:4203/assets/twp'+ '/chatbot-panel.html'
-    let url = testItOutUrl + '?tiledesk_projectid=' + this.projectID + 
-                              '&tiledesk_participants=bot_' + this.selectedChatbot._id + 
-                              "&tiledesk_departmentID=" + this.defaultDepartmentId + 
-                              "&tiledesk_widgetTitle="+ this.selectedChatbot.name +
-                              "&tiledesk_preChatForm=false" +
-                              '&tiledesk_fullscreenMode=true&td_draft=true'
-    if(this.intentName && this.intentName !== '') 
-      url += '&tiledesk_hiddenMessage=' + this.intentName
-                          
+    let url = testItOutUrl + '?GPTMysite_projectid=' + this.projectID +
+                              '&GPTMysite_participants=bot_' + this.selectedChatbot._id +
+                              "&GPTMysite_departmentID=" + this.defaultDepartmentId +
+                              "&GPTMysite_widgetTitle="+ this.selectedChatbot.name +
+                              "&GPTMysite_preChatForm=false" +
+                              '&GPTMysite_fullscreenMode=true&td_draft=true'
+    if(this.intentName && this.intentName !== '')
+      url += '&GPTMysite_hiddenMessage=' + this.intentName
+
     this.widgetTestSiteUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 

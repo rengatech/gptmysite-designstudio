@@ -6,7 +6,7 @@ import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
 import { downloadObjectAsJson } from 'src/app/utils/util';
 import { AppConfigService } from 'src/app/services/app-config';
-import { TiledeskAuthService } from 'src/chat21-core/providers/tiledesk/tiledesk-auth.service';
+import { GPTMysiteAuthService } from 'src/chat21-core/providers/GPTMysite/GPTMysite-auth.service';
 import { UserModel } from 'src/chat21-core/models/user';
 import { environment } from 'src/environments/environment';
 import { TYPE_URL } from '../../utils';
@@ -24,7 +24,7 @@ export class CDSMenuComponent implements OnInit {
   @Input() menuType: 'header' | 'sidebar' = 'header';
   @Input() menuTitle: 'string'
   @Output() onMenuOption = new EventEmitter();
-  
+
   TYPE_URL = TYPE_URL;
   selectedChatbot: Chatbot;
   loggedUser: UserModel;
@@ -36,14 +36,14 @@ export class CDSMenuComponent implements OnInit {
   constructor(
     private dashboardService: DashboardService,
     private appConfigService: AppConfigService,
-    private tiledeskAuthService: TiledeskAuthService
+    private GPTMysiteAuthService: GPTMysiteAuthService
   ) {
     this.selectedChatbot = this.dashboardService.selectedChatbot
     this.version = environment.VERSION
    }
 
   ngOnInit(): void {
-    this.loggedUser = this.tiledeskAuthService.getCurrentUser();
+    this.loggedUser = this.GPTMysiteAuthService.getCurrentUser();
   }
 
   ngOnChanges(){

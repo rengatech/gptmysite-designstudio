@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { SatPopover } from '@ncstate/sat-popover';
-import { TiledeskVarSplitter } from '../../TiledeskVarSplitter';
+import { GPTMysiteVarSplitter } from '../../GPTMysiteVarSplitter';
 import { calculatingRemainingCharacters, TEXT_CHARS_LIMIT } from '../../utils';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
 import { LoggerInstance } from 'src/chat21-core/providers/logger/loggerInstance';
@@ -44,7 +44,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
     { name: 'userFullName', value: 'userFullName' },
   ]
   // -----------------------------
-  // new 
+  // new
   // -----------------------------
   cannedResponseMessage: string;
   elTextarea: HTMLInputElement;
@@ -98,7 +98,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
     var val = this.elTextarea.value;
     this.logger.log('onVariableSelected val', val)
     this.elTextarea.value = ''; //clear the value of the element
-    this.elTextarea.value = val; //set that value back. 
+    this.elTextarea.value = val; //set that value back.
   }
 
 
@@ -132,7 +132,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
       myField.focus();
       var val = myField.value; //store the value of the element
       myField.value = ''; //clear the value of the element
-      myField.value = val + ' '; //set that value back. 
+      myField.value = val + ' '; //set that value back.
 
       this.cannedResponseMessage = myField.value;
 
@@ -201,7 +201,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
 
 
   private splitText(text) {
-    const splits = new TiledeskVarSplitter().getSplits(text);
+    const splits = new GPTMysiteVarSplitter().getSplits(text);
     this.logger.log('[TEXT-EDITABLE-DIV] ngOnChanges splits:', splits)
     let tagName = ''
     let tagNameAsTag = ''
@@ -258,7 +258,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
     this.logger.log("[TEXT-EDITABLE-DIV] selectedAttibute imputEle: ", imputEle);
     this.setattributepopover.close()
     // setTimeout(() => {
-    //   if (this.savedSelection) { 
+    //   if (this.savedSelection) {
     //     this.restoreSelection(imputEle, this.savedSelection)
 
     //   } else {
@@ -273,10 +273,10 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
     // this.setCaret(imputEle);
 
     // let savedRange = this.savedSelection.getRangeAt(0)
-    // this.logger.log('savedRange: ', savedRange) 
+    // this.logger.log('savedRange: ', savedRange)
 
     // let clonedRange = savedRange.cloneRange()
-    // this.logger.log('clonedRange: ', clonedRange) 
+    // this.logger.log('clonedRange: ', clonedRange)
 
     if (this.savedSelection) {
       this.restoreSelection(imputEle, this.savedSelection)
@@ -352,7 +352,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
         // setTimeout(() => {
         range.setStart(childNode, 1)
         // }, 500);
-        // this.saveSelection(imputEle, 0, 'setCaret') 
+        // this.saveSelection(imputEle, 0, 'setCaret')
       }
     });
 
@@ -416,7 +416,7 @@ export class TextEditableDivComponent implements OnInit, OnChanges {
     }
   }
 
-  // 
+  //
   onInput(calledBy) {
     this.logger.log('[TEXT-EDITABLE-DIV] onInput calledBy ', calledBy);
     let imputEle = this.elementRef.nativeElement.querySelector('#content-editable') //document.querySelector('[contenteditable]'),  //document.querySelector('[contenteditable]'),

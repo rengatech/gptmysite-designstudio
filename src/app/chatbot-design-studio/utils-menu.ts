@@ -7,12 +7,12 @@ export var LOGO_MENU_ITEMS: Array<{ key: string, label: string, icon: string, ty
 ]
 
 export var INFO_MENU_ITEMS: Array<{ key: string, label: string, icon: string, type: TYPE_URL, status:"active" | "inactive", src?: string}> = [
-    // { key: 'HELP_CENTER', label: 'HelpCenter', icon: 'help', type: TYPE_URL.BLANK , status: "active", src: 'https://gethelp.tiledesk.com/'},
-    // { key: 'ROAD_MAP', label: 'RoadMap', icon: 'checklist', type: TYPE_URL.BLANK, status: "active", src: 'https://feedback.tiledesk.com/roadmap'},
+    // { key: 'HELP_CENTER', label: 'HelpCenter', icon: 'help', type: TYPE_URL.BLANK , status: "active", src: 'https://gethelp.GPTMysite.com/'},
+    // { key: 'ROAD_MAP', label: 'RoadMap', icon: 'checklist', type: TYPE_URL.BLANK, status: "active", src: 'https://feedback.GPTMysite.com/roadmap'},
     { key: 'SUPPORT',       label: 'Help',      icon: 'help',                   type: TYPE_URL.SELF,        status: "active"                                                },
-    { key: 'FEEDBACK',      label: 'Feedback',  icon: 'lightbulb',              type: TYPE_URL.BLANK,       status: "active", src: 'https://feedback.tiledesk.com/feedback' },
-    { key: 'CHANGELOG',     label: 'WhatsNew',  icon: 'local_fire_department',  type: TYPE_URL.BLANK,       status: "active", src:'https://feedback.tiledesk.com/changelog' },
-    // { key: 'GITHUB', label: 'GitHubRepo', icon: 'assets/images/github-mark.svg', type: TYPE_URL.BLANK, status: "active", src: 'https://github.com/Tiledesk'}
+    { key: 'FEEDBACK',      label: 'Feedback',  icon: 'lightbulb',              type: TYPE_URL.BLANK,       status: "active", src: 'https://feedback.GPTMysite.com/feedback' },
+    { key: 'CHANGELOG',     label: 'WhatsNew',  icon: 'local_fire_department',  type: TYPE_URL.BLANK,       status: "active", src:'https://feedback.GPTMysite.com/changelog' },
+    // { key: 'GITHUB', label: 'GitHubRepo', icon: 'assets/images/github-mark.svg', type: TYPE_URL.BLANK, status: "active", src: 'https://github.com/GPTMysite'}
 ]
 
 export var SHARE_MENU_ITEMS: Array<{ key: string, label: string, icon: string, type: TYPE_URL, src?: string}> = [
@@ -32,14 +32,14 @@ export var PLAY_MENU_ITEMS: Array<{ key: string, label: string, icon: string, ty
 
 export var SUPPORT_OPTIONS: { [key: string]: Array<{ key: string, label: string, icon: string, type: TYPE_URL, status: "active" | "inactive", src?: string, description?: string}>} = {
     "SELF_SERVICE":[
-        { key: 'DOCS',          label: 'Docs',          icon: 'description',                    type: TYPE_URL.BLANK,   status:"active",    src: 'https://developer.tiledesk.com/'},
-        { key: 'HELP_CENTER',   label: 'HelpCenter',    icon: 'help',                           type: TYPE_URL.BLANK ,  status:"active",    src: 'https://gethelp.tiledesk.com/'},
-        { key: 'ROAD_MAP',      label: 'RoadMap',       icon: 'checklist',                      type: TYPE_URL.BLANK,   status:"active",    src: 'https://feedback.tiledesk.com/roadmap'},
-        { key: 'SYSTEM_STATUS', label: 'SystemStatus',  icon: 'health_and_safety',              type: TYPE_URL.BLANK,   status:"active",    src: 'https://tiledesk.instatus.com/'},
-        { key: 'GITHUB',        label: 'GitHubRepo',    icon: 'assets/images/github-mark.svg',  type: TYPE_URL.BLANK,   status:"active",    src: 'https://github.com/Tiledesk'}
+        { key: 'DOCS',          label: 'Docs',          icon: 'description',                    type: TYPE_URL.BLANK,   status:"active",    src: 'https://developer.GPTMysite.com/'},
+        { key: 'HELP_CENTER',   label: 'HelpCenter',    icon: 'help',                           type: TYPE_URL.BLANK ,  status:"active",    src: 'https://gethelp.GPTMysite.com/'},
+        { key: 'ROAD_MAP',      label: 'RoadMap',       icon: 'checklist',                      type: TYPE_URL.BLANK,   status:"active",    src: 'https://feedback.GPTMysite.com/roadmap'},
+        { key: 'SYSTEM_STATUS', label: 'SystemStatus',  icon: 'health_and_safety',              type: TYPE_URL.BLANK,   status:"active",    src: 'https://GPTMysite.instatus.com/'},
+        { key: 'GITHUB',        label: 'GitHubRepo',    icon: 'assets/images/github-mark.svg',  type: TYPE_URL.BLANK,   status:"active",    src: 'https://github.com/GPTMysite'}
     ],
     "CONTACT_US": [
-        { key: 'EMAIL',   label: 'SendUsEmail',         icon: 'mail',                           type: TYPE_URL.BLANK ,  status:"active",    src: 'mailto:support@tiledesk.com', description:"support@tiledesk.com"},
+        { key: 'EMAIL',   label: 'SendUsEmail',         icon: 'mail',                           type: TYPE_URL.BLANK ,  status:"active",    src: 'mailto:support@GPTMysite.com', description:"support@GPTMysite.com"},
         { key: 'CHAT',      label: 'ChatUs',            icon: 'forum',                          type: TYPE_URL.BLANK ,  status:"active",    description:"StartConversation"},
         { key: 'DISCORD',   label: 'DiscordChannel',    icon: 'assets/images/discord.svg',  type: TYPE_URL.BLANK ,  status:"active",    src: 'https://discord.gg/Wut2FtpP', description:"JoinDiscordChannel"},
     ]

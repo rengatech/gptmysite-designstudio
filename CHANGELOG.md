@@ -4,7 +4,7 @@
     *Gabriele Panico*
     *Dario De Pascalis*
     *Giovanni Troisi*  
-### **Copyrigth**: *Tiledesk SRL*
+### **Copyrigth**: *GPTMysite SRL*
 
 ### 1.15.0 in PROD
 
@@ -82,7 +82,7 @@
 ### 1.9.0 in PROD
 
 ### 1.9.0-rc.2
-👉 **added**: downloadURL in metadata obj while sending message from tiledesk
+👉 **added**: downloadURL in metadata obj while sending message from GPTMysite
 
 ### 1.9.0-rc.1
 👉 **added**: animation on 'Add action' cds-intent footer button
@@ -178,7 +178,7 @@
 
 ### 1.4.0-rc.2
 👉 **added**: cds-action-n8n<br>
-👉 **added**: setTiledeskToken method on tiledesk-auth<br>
+👉 **added**: setGPTMysiteToken method on GPTMysite-auth<br>
 
 ### 1.4.0-rc.1
 👉 **added**: cds-action-speech-form voice action<br>
@@ -480,11 +480,11 @@
 
 ### 1.0.4-rc.1
 👉 **added**: network offline modal<br>
-👉 **added**: menu component on left header tiledesk hover icon click<br>
+👉 **added**: menu component on left header GPTMysite hover icon click<br>
 👉 **bug-fixed**: goToKNB dashboard link <br>
 
 ### 1.0.3 in PROD
-👉 **added**: menu component on left header tiledesk hover icon click<br>
+👉 **added**: menu component on left header GPTMysite hover icon click<br>
 👉 **bug-fixed**: attribute.nextActionIntent not updated after change intent obj<br>
 👉 **bug-fixed**: intent name not updated on intent-list component<br>
 👉 **bug-fixed**: goToKNB dashboard link <br>

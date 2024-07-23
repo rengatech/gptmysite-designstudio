@@ -29,7 +29,7 @@ export class ChatManager {
  
 
   private currentUser: UserModel;
-  private tiledeskToken: string;
+  private GPTMysiteToken: string;
 
   private handlers: ConversationHandlerService[];
   public openInfoConversation: boolean;
@@ -54,18 +54,18 @@ export class ChatManager {
   }
 
   /**
-   * setTiledeskToken
+   * setGPTMysiteToken
    */
-  public setTiledeskToken(tiledeskToken: string) {
+  public setGPTMysiteToken(GPTMysiteToken: string) {
     this.logger.log('initialize FROM [APP-COMP] - [CHAT MANAGER] - initialize -> firebaseConfig tenant ', this.tenant);
-    this.tiledeskToken = tiledeskToken;
+    this.GPTMysiteToken = GPTMysiteToken;
   }
 
   /**
-   * return tiledeskToken
+   * return GPTMysiteToken
    */
-  public getTiledeskToken(): string {
-    return this.tiledeskToken;
+  public getGPTMysiteToken(): string {
+    return this.GPTMysiteToken;
   }
 
   /**

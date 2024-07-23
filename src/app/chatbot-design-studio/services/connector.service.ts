@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TiledeskConnectors } from 'src/assets/js/tiledesk-connectors.js';
+import { GPTMysiteConnectors } from 'src/assets/js/GPTMysite-connectors.js';
 import { StageService } from '../services/stage.service';
 import { TYPE_BUTTON, isElementOnTheStage, generateShortUID } from '../utils';
 import { LoggerService } from 'src/chat21-core/providers/abstract/logger.service';
@@ -15,7 +15,7 @@ import { TYPE_ACTION, TYPE_ACTION_VXML } from '../utils-actions';
 
 export class ConnectorService {
   listOfConnectors: any = {};
-  tiledeskConnectors: any;
+  GPTMysiteConnectors: any;
   connectorDraft: any = {};
   listOfIntents: any;
 
@@ -24,8 +24,8 @@ export class ConnectorService {
   constructor() {}
 
   initializeConnectors(){
-    this.tiledeskConnectors = new TiledeskConnectors("tds_drawer", {"input_block": "tds_input_block"}, {});
-    this.tiledeskConnectors.mousedown(document);
+    this.GPTMysiteConnectors = new GPTMysiteConnectors("tds_drawer", {"input_block": "tds_input_block"}, {});
+    this.GPTMysiteConnectors.mousedown(document);
   }
 
  
@@ -68,9 +68,9 @@ export class ConnectorService {
     let elTo = await isElementOnTheStage(toId); // sync
     this.logger.log('[CONNECTOR-SERV] createNewConnector:: ', elFrom, elTo);
     if (elFrom && elTo) { 
-      const fromPoint = this.tiledeskConnectors.elementLogicCenter(elFrom);
-      const toPoint = this.tiledeskConnectors.elementLogicTopLeft(elTo);
-      this.tiledeskConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, true, null);
+      const fromPoint = this.GPTMysiteConnectors.elementLogicCenter(elFrom);
+      const toPoint = this.GPTMysiteConnectors.elementLogicTopLeft(elTo);
+      this.GPTMysiteConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, true, null);
     }
   }
 
@@ -101,7 +101,7 @@ export class ConnectorService {
     const isConnector = document.getElementById(connectorID);
     if (isConnector) {
       this.logger.log('[CONNECTOR-SERV] il connettore esiste già', connectorID);
-      this.tiledeskConnectors.updateConnectorsOutOfItent(connectorID);
+      this.GPTMysiteConnectors.updateConnectorsOutOfItent(connectorID);
       return true;
     } 
     let fromEle = document.getElementById(fromId);
@@ -115,10 +115,10 @@ export class ConnectorService {
       this.logger.log('[CONNECTOR-SERV] isOnTheStage toEle:', toEle);
     }
     if(fromEle && toEle){
-      const fromPoint = this.tiledeskConnectors.elementLogicCenter(fromEle);
-      const toPoint = this.tiledeskConnectors.elementLogicTopLeft(toEle);
+      const fromPoint = this.GPTMysiteConnectors.elementLogicCenter(fromEle);
+      const toPoint = this.GPTMysiteConnectors.elementLogicTopLeft(toEle);
       this.logger.log('[CONNECTOR-SERV] createConnector attributes:', attributes);
-      this.tiledeskConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, notify, attributes);
+      this.GPTMysiteConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, notify, attributes);
       return true;
     } else {
       return false;
@@ -135,7 +135,7 @@ export class ConnectorService {
     const isConnector = document.getElementById(connectorID);
     if (isConnector) {
       this.logger.log('[CONNECTOR-SERV] createConnectorById il connettore esiste già', connectorID);
-      this.tiledeskConnectors.updateConnectorsOutOfItent(connectorID);
+      this.GPTMysiteConnectors.updateConnectorsOutOfItent(connectorID);
       return true;
     } 
     var lastIndex = connectorID.lastIndexOf("/");
@@ -156,10 +156,10 @@ export class ConnectorService {
         this.logger.log('[CONNECTOR-SERV] isOnTheStageFrom', toEle, toId);
       }
       if (toEle && fromEle) {
-        const fromPoint = this.tiledeskConnectors.elementLogicCenter(fromEle);
-        const toPoint = this.tiledeskConnectors.elementLogicTopLeft(toEle);
+        const fromPoint = this.GPTMysiteConnectors.elementLogicCenter(fromEle);
+        const toPoint = this.GPTMysiteConnectors.elementLogicTopLeft(toEle);
         this.logger.log('[CONNECTOR-SERV] createConnectorById createConnector', connectorID);
-        this.tiledeskConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, false, null);
+        this.GPTMysiteConnectors.createConnector(fromId, toId, fromPoint, toPoint, false, false, null);
         return true;
       } else {
         return false;
@@ -833,7 +833,7 @@ export class ConnectorService {
    */
   public removeConnectorDraft(){
     this.connectorDraft = null;
-    this.tiledeskConnectors.removeConnectorDraft();
+    this.GPTMysiteConnectors.removeConnectorDraft();
   }
 
   /**
@@ -841,7 +841,7 @@ export class ConnectorService {
    * @param intent_id 
    */
   public deleteConnectorsOfBlockThatDontExist(intent_id){
-    this.tiledeskConnectors.deleteConnectorsOfBlockThatDontExist(intent_id);
+    this.GPTMysiteConnectors.deleteConnectorsOfBlockThatDontExist(intent_id);
     this.logger.log('[CONNECTOR-SERV] deleteConnectorsOfBlockThatDontExist intent_id ' ,intent_id);
   }
 
@@ -851,7 +851,7 @@ export class ConnectorService {
    * @param dispatch 
    */
   public deleteConnectorsOutOfBlock(intent_id, save=false, notify=true){
-    this.tiledeskConnectors.deleteConnectorsOutOfBlock(intent_id, save, notify);
+    this.GPTMysiteConnectors.deleteConnectorsOutOfBlock(intent_id, save, notify);
     // this.logger.log('[CONNECTOR-SERV] deleteConnectorsOutOfBlock intent_id ' ,intent_id);
   }
 
@@ -861,7 +861,7 @@ export class ConnectorService {
    */
   public deleteConnectorsOfBlock(intent_id, save=false, notify=false){
     this.logger.log('[CONNECTOR-SERV] deleteConnectorsOfBlock intent_id ' ,intent_id);
-    this.tiledeskConnectors.deleteConnectorsOfBlock(intent_id, save, notify);
+    this.GPTMysiteConnectors.deleteConnectorsOfBlock(intent_id, save, notify);
   }
 
   /**
@@ -869,7 +869,7 @@ export class ConnectorService {
    * @param intent_id 
    */
   public deleteConnectorsBrokenOutOfBlock(intent_id){
-    this.tiledeskConnectors.deleteConnectorsBrokenOutOfBlock(intent_id);
+    this.GPTMysiteConnectors.deleteConnectorsBrokenOutOfBlock(intent_id);
     this.logger.log('[CONNECTOR-SERV] deleteConnectorsBrokenOutOfBlock intent_id ' ,intent_id )
   }
 
@@ -879,7 +879,7 @@ export class ConnectorService {
    * @param connId 
    */
   public deleteConnectorFromAction(actionId, connId){
-    this.tiledeskConnectors.deleteConnectorFromAction(actionId, connId);
+    this.GPTMysiteConnectors.deleteConnectorFromAction(actionId, connId);
     this.logger.log('[CONNECTOR-SERV] deleteConnectorFromAction actionId ' ,actionId ,' connId ', connId)
   }
 
@@ -888,13 +888,13 @@ export class ConnectorService {
    * @param actionId 
    */
   public deleteConnectorsFromActionByActionId(actionId){
-    this.tiledeskConnectors.deleteConnectorsFromActionByActionId(actionId);
+    this.GPTMysiteConnectors.deleteConnectorsFromActionByActionId(actionId);
     this.logger.log('[CONNECTOR-SERV] deleteConnectorsFromActionByActionId actionId ' ,actionId )
   }
 
 
   public deleteConnectorsToIntentById(intentId){
-    this.tiledeskConnectors.deleteConnectorsToIntentById(intentId);
+    this.GPTMysiteConnectors.deleteConnectorsToIntentById(intentId);
     this.logger.log('[CONNECTOR-SERV] deleteConnectorsToIntentById intentId ' ,intentId );
   }
 
@@ -907,7 +907,7 @@ export class ConnectorService {
   public deleteConnector(connectorID, save=false, notify=true) {
     this.logger.log('[CONNECTOR-SERV] deleteConnector::  connectorID ', connectorID, save, notify);
     this.deleteConnectorAttributes(connectorID);
-    this.tiledeskConnectors.deleteConnector(connectorID, save, notify);
+    this.GPTMysiteConnectors.deleteConnector(connectorID, save, notify);
   }
 
 
@@ -923,7 +923,7 @@ export class ConnectorService {
   /** */
   // public deleteAllConnectors(){
   //   this.logger.log('[CONNECTOR-SERV] deleteAllConnectors:: ');
-  //   this.tiledeskConnectors.deleteAllConnectors();
+  //   this.GPTMysiteConnectors.deleteAllConnectors();
   // }
 
   /**
@@ -934,13 +934,13 @@ export class ConnectorService {
    * elimino il connettore creato in precedenza allo stesso punto e lo sostituisco con il nuovo
    */
   public deleteConnectorWithIDStartingWith(connectorID, save=false, notify=true){
-    this.logger.log('[CONNECTOR-SERV] deleteConnectorWithIDStartingWith:: ', connectorID, this.tiledeskConnectors.connectors);
+    this.logger.log('[CONNECTOR-SERV] deleteConnectorWithIDStartingWith:: ', connectorID, this.GPTMysiteConnectors.connectors);
     const isConnector = document.getElementById(connectorID);
     if (isConnector){
-      const listOfConnectors = Object.keys(this.tiledeskConnectors.connectors)
+      const listOfConnectors = Object.keys(this.GPTMysiteConnectors.connectors)
       .filter(key => key.startsWith(connectorID))
       .reduce((filteredMap, key) => {
-        filteredMap[key] = this.tiledeskConnectors.connectors[key];
+        filteredMap[key] = this.GPTMysiteConnectors.connectors[key];
         return filteredMap;
       }, {});
       for (const [key, connector] of Object.entries(listOfConnectors)) {
@@ -978,7 +978,7 @@ export class ConnectorService {
     if(elem){
       this.logger.log('[CONNECTOR-SERV] aggiorno i connettori: ', elem);
       //setTimeout(() => {
-        this.tiledeskConnectors.updateConnectorsOutOfItent(elem);
+        this.GPTMysiteConnectors.updateConnectorsOutOfItent(elem);
       //}, 0);
     }
   }
@@ -1040,7 +1040,7 @@ export class ConnectorService {
         const fromId = element.id;
         const connectionId = element.getAttribute('idConnection');
         this.logger.log('[CONNECTOR-SERV] element::', element, connectionId, fromId);
-        for (var connectorId in this.tiledeskConnectors.connectors) {
+        for (var connectorId in this.GPTMysiteConnectors.connectors) {
           if (connectorId.startsWith(fromId)) {
             this.deleteConnectorById(connectorId);
           }
@@ -1056,10 +1056,10 @@ export class ConnectorService {
 
 
   public deleteConnectorById(connectorId) {
-    // for (var connectorKey in this.tiledeskConnectors.connectors) {
+    // for (var connectorKey in this.GPTMysiteConnectors.connectors) {
     //   console.log("[JS] deleteConnectorWithFromId ----> ", fromId, connectorKey);
     //   if (connectorKey.startsWith(fromId)) {
-    //     const connectorId = this.tiledeskConnectors.connectors[connectorKey].id;
+    //     const connectorId = this.GPTMysiteConnectors.connectors[connectorKey].id;
         let connectorElement = document.getElementById(connectorId);
         if(connectorElement){
           // console.log("[JS] deleteConnectorWithFromId ----> ID",connectorId);
@@ -1078,7 +1078,7 @@ export class ConnectorService {
    * @param y 
    */
   public moved(element, x, y){
-    this.tiledeskConnectors.moved(element, x, y);
+    this.GPTMysiteConnectors.moved(element, x, y);
     // this.logger.log('[CONNECTOR-SERV] moved element ' ,element , ' x ' , x ,  'y ',  y )
   }
   /*************************************************/
@@ -1095,11 +1095,11 @@ export class ConnectorService {
   //  */
   // public searchConnectorsOutOfIntent(intent_id): Array<any>{
   //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOutOfIntent::: ', intent_id);
-  //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOutOfIntent::: ', this.tiledeskConnectors.connectors);
-  //   const connectors = Object.keys(this.tiledeskConnectors.connectors)
+  //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOutOfIntent::: ', this.GPTMysiteConnectors.connectors);
+  //   const connectors = Object.keys(this.GPTMysiteConnectors.connectors)
   //   .filter(key => key.includes(intent_id) && key.startsWith(intent_id) )
   //   .reduce((filteredMap, key) => {
-  //     filteredMap[key] = this.tiledeskConnectors.connectors[key];
+  //     filteredMap[key] = this.GPTMysiteConnectors.connectors[key];
   //     return filteredMap;
   //   }, {});
   //   const arrayConnectors = Object.values(connectors);
@@ -1109,11 +1109,11 @@ export class ConnectorService {
 
   // public searchConnectorsOfIntent(intent_id){
   //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOfIntent::: ', intent_id);
-  //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOfIntent::: ', this.tiledeskConnectors.connectors);
-  //   const INOUTconnectors = Object.keys(this.tiledeskConnectors.connectors)
+  //   this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsOfIntent::: ', this.GPTMysiteConnectors.connectors);
+  //   const INOUTconnectors = Object.keys(this.GPTMysiteConnectors.connectors)
   //   .filter(key => key.includes(intent_id) ) //&& !key.startsWith(intent_id)
   //   .reduce((filteredMap, key) => {
-  //     filteredMap[key] = this.tiledeskConnectors.connectors[key];
+  //     filteredMap[key] = this.GPTMysiteConnectors.connectors[key];
   //     return filteredMap;
   //   }, {});
   //   const arrayConnectors = Object.values(INOUTconnectors);
@@ -1129,11 +1129,11 @@ export class ConnectorService {
    */
   public searchConnectorsInByIntent(intent_id: string): Array<any>{
     // this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsInOfIntent::: ', intent_id);
-    // this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsInOfIntent::: ', this.tiledeskConnectors.connectors);
-    const connectors = Object.keys(this.tiledeskConnectors.connectors)
+    // this.logger.log('[CONNECTOR-SERV] -----> searchConnectorsInOfIntent::: ', this.GPTMysiteConnectors.connectors);
+    const connectors = Object.keys(this.GPTMysiteConnectors.connectors)
     .filter(key => key.includes(intent_id) && !key.startsWith(intent_id) )
     .reduce((filteredMap, key) => {
-      filteredMap[key] = this.tiledeskConnectors.connectors[key];
+      filteredMap[key] = this.GPTMysiteConnectors.connectors[key];
       return filteredMap;
     }, {});
     const arrayConnectors = Object.values(connectors);
@@ -1177,7 +1177,7 @@ export class ConnectorService {
    * @param positions 
    */
   public logicPoint(positions){
-    return this.tiledeskConnectors.logicPoint(positions);
+    return this.GPTMysiteConnectors.logicPoint(positions);
   }
   
 }

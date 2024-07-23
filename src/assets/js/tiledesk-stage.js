@@ -1,4 +1,4 @@
-export class TiledeskStage {
+export class GPTMysiteStage {
 
     tx = 0;
     ty = 0;
@@ -23,7 +23,7 @@ export class TiledeskStage {
         this.classDraggable = classDraggable;
         this.moveAndZoom = this.moveAndZoom.bind(this);
     }
-    
+
     setDrawer() {
         this.container = document.getElementById(this.containerId);
         this.drawer = document.getElementById(this.drawerId);
@@ -44,7 +44,7 @@ export class TiledeskStage {
         var clientY = 0;
         this.container.onmousedown = (function(event) {
             // console.log('mousedown', event.button);// this.isDraggingElement);  && this.isDraggingElement === false
-            if (event.button === 1) { 
+            if (event.button === 1) {
                 // Bottone centrale del mouse (rotellina)
                 isDragging = true;
                 event.preventDefault();
@@ -53,7 +53,7 @@ export class TiledeskStage {
                 this.getPositionNow();
                 startX = this.tx;
                 startY = this.ty;
-            
+
                 document.onmousemove = (function(event) {
                     console.log('mousemove', isDragging, event, this.tx);
                     if (isDragging) {
@@ -94,7 +94,7 @@ export class TiledeskStage {
             // console.log('mousemove ctrlKey: ', event, this.tx);
             this.transform();
         } else {
-            var originRec = this.container.getBoundingClientRect();            
+            var originRec = this.container.getBoundingClientRect();
             // zoom
             var zoom_target = {x:0,y:0}
             var zoom_point = {x:0,y:0}
@@ -115,7 +115,7 @@ export class TiledeskStage {
             const customEvent = new CustomEvent("moved-and-scaled", { detail: {scale: this.scale, x: this.tx, y: this.ty} });
             document.dispatchEvent(customEvent);
         }, 0)
-        
+
     }
 
     zoom(event){
@@ -127,7 +127,7 @@ export class TiledeskStage {
         }
         return this.centerStageOnCenterPosition(scale);
     }
-    
+
     transform() {
         let tcmd = `translate(${this.tx}px, ${this.ty}px)`;
         let scmd = `scale(${this.scale})`;
@@ -197,7 +197,7 @@ export class TiledeskStage {
                 const custom_event = new CustomEvent("dragged", {
                     detail: {
                         element: element,
-                        x: pos_x, 
+                        x: pos_x,
                         y: pos_y
                     }
                 });
@@ -217,9 +217,9 @@ export class TiledeskStage {
             }).bind(this);
 
         }).bind(this);
-        
+
     }
-    
+
 
 
     physicPointCorrector(point){
@@ -349,5 +349,5 @@ export class TiledeskStage {
         } else {
             return false;
         }
-    }  
+    }
   }

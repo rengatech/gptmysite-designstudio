@@ -146,7 +146,7 @@ export function uploadFactory(http: HttpClient, appConfig: AppConfigService, app
       enableSourceMaps: false,
       disableFileDetails: true,
       colorScheme: ['purple', 'yellow', 'gray', 'gray', 'red', 'red', 'red'],
-      // serverLoggingUrl: 'https://tiledesk-server-pre.herokuapp.com/logs'
+      // serverLoggingUrl: 'https://GPTMysite-server-pre.herokuapp.com/logs'
     }),
     // MatSliderModule,
     // MatSidenavModule,
